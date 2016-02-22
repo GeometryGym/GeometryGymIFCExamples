@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{84E0D08C-7B02-46AE-AF40-0DD949B2B4A1}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>testConsole</RootNamespace>
+    <AssemblyName>testConsole</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\ifc\BaseClassIFC.cs">
+      <Link>IFC\BaseClassIFC.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\DatabaseIFC.cs">
+      <Link>IFC\DatabaseIFC.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\Enumerations.cs">
+      <Link>IFC\Enumerations.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\ifc A.cs">
+      <Link>IFC\ifc A.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC B.cs">
+      <Link>IFC\IFC B.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC C.cs">
+      <Link>IFC\IFC C.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC D.cs">
+      <Link>IFC\IFC D.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC E.cs">
+      <Link>IFC\IFC E.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC F.cs">
+      <Link>IFC\IFC F.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC G.cs">
+      <Link>IFC\IFC G.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC H.cs">
+      <Link>IFC\IFC H.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC I.cs">
+      <Link>IFC\IFC I.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC J.cs">
+      <Link>IFC\IFC J.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC L.cs">
+      <Link>IFC\IFC L.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC M.cs">
+      <Link>IFC\IFC M.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC N.cs">
+      <Link>IFC\IFC N.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC O.cs">
+      <Link>IFC\IFC O.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC P.cs">
+      <Link>IFC\IFC P.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC Q.cs">
+      <Link>IFC\IFC Q.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC R.cs">
+      <Link>IFC\IFC R.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC S.cs">
+      <Link>IFC\IFC S.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC T.cs">
+      <Link>IFC\IFC T.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC U.cs">
+      <Link>IFC\IFC U.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC V.cs">
+      <Link>IFC\IFC V.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC W.cs">
+      <Link>IFC\IFC W.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\IFC Z.cs">
+      <Link>IFC\IFC Z.cs</Link>
+    </Compile>
+    <Compile Include="..\..\ifc\ParserIFC.cs">
+      <Link>IFC\ParserIFC.cs</Link>
+    </Compile>
+    <Compile Include="..\..\step\BaseClassSTEP.cs">
+      <Link>STEP\BaseClassSTEP.cs</Link>
+    </Compile>
+    <Compile Include="..\..\step\ParserSTEP.cs">
+      <Link>STEP\ParserSTEP.cs</Link>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
