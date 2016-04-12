@@ -7,7 +7,6 @@ using GeometryGym.Ifc;
 
 namespace testConsole
 {
-	// type "C:\My Work\Geometry Gym\documents\GeometryGym\BIM\ifc\grasshopper\older\151119 klein slabs 7 stories.ifc" | testConsole.exe
 	class Program
 	{
 		static void Main(string[] args)
@@ -25,10 +24,10 @@ namespace testConsole
 				return 0;
 			int result = 0;
 			List<IfcRelAggregates> aggregates = element.IsDecomposedBy;
-			foreach(IfcRelAggregates rag in aggregates)
+			foreach (IfcRelAggregates rag in aggregates)
 			{
 				List<IfcObjectDefinition> objects = rag.RelatedObjects;
-				foreach(IfcObjectDefinition obj in objects)
+				foreach (IfcObjectDefinition obj in objects)
 				{
 					IfcBuildingStorey storey = obj as IfcBuildingStorey;
 					if (storey != null)
