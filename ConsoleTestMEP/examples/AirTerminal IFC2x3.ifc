@@ -1,0 +1,62 @@
+ISO-10303-21;
+HEADER;
+FILE_DESCRIPTION(('ViewDefinition [notYetAssigned]'),'2;1');
+FILE_NAME(
+/* name */ 'C:\\My Work\\Geometry Gym\\GitHub\\GeometryGymIFCExamples\\ConsoleTestMEP\\examples\\AirTerminal IFC2x3.ifc',
+/* time_stamp */ '2016-05-06T12:41:20',
+/* author */ ('jonm'),
+/* organization */ ('Unknown'),
+/* preprocessor_version */ 'GeomGymIFC by Geometry Gym Pty Ltd',
+/* originating_system */ 'GeometryGymIFC',
+/* authorization */ 'None');
+
+FILE_SCHEMA (('IFC2X3'));
+ENDSEC;
+
+DATA;
+#1= IFCPERSONANDORGANIZATION(#2,#3,$);
+#2= IFCPERSON('jonm','jonm',$,$,$,$,$,$);
+#3= IFCORGANIZATION($,'UNKNOWN',$,$,$);
+#4= IFCAPPLICATION(#5,'0.0.4.0','GeometryGymIFC','GeometryGymIFC');
+#5= IFCORGANIZATION($,'Geometry Gym Pty Ltd',$,$,$);
+#6= IFCOWNERHISTORY(#1,#4,$,.ADDED.,1462538480,$,$,1462538480);
+#7= IFCGEOMETRICREPRESENTATIONCONTEXT($,'Model',3,0.0001,#9,$);
+#8= IFCCARTESIANPOINT((0.0,0.0,0.0));
+#9= IFCAXIS2PLACEMENT3D(#8,$,$);
+#10= IFCGEOMETRICREPRESENTATIONSUBCONTEXT('Axis','Model',*,*,*,*,#7,$,.MODEL_VIEW.,$);
+#11= IFCGEOMETRICREPRESENTATIONSUBCONTEXT('Body','Model',*,*,*,*,#7,$,.MODEL_VIEW.,$);
+#12= IFCCARTESIANPOINT((0.0,0.0,0.0));
+#13= IFCDIRECTION((1.0,0.0,0.0));
+#14= IFCDIRECTION((0.0,1.0,0.0));
+#15= IFCDIRECTION((0.0,0.0,1.0));
+#16= IFCCARTESIANPOINT((0.0,0.0));
+#17= IFCAXIS2PLACEMENT2D(#16,$);
+#18= IFCSIUNIT(*,.LENGTHUNIT.,$,.METRE.);
+#19= IFCSIUNIT(*,.AREAUNIT.,$,.SQUARE_METRE.);
+#20= IFCSIUNIT(*,.VOLUMEUNIT.,$,.CUBIC_METRE.);
+#21= IFCLOCALPLACEMENT($,#9);
+#22= IFCBUILDING('3T2lpntB95C8ubuhqR2Os8',#6,'IfcBuilding',$,$,#21,$,$,.ELEMENT.,$,$,$);
+#23= IFCRELCONTAINEDINSPATIALSTRUCTURE('1t4pxCP3X09hu3vBB$JV7c',#6,'Building','Building Container for Elements',(#39),#22);
+#24= IFCPROJECT('0QNgItncv45fmRLPwpMN5K',#6,'IfcProject',$,$,$,$,(#7),#25);
+#25= IFCUNITASSIGNMENT((#26,#19,#20,#27,#28));
+#26= IFCSIUNIT(*,.LENGTHUNIT.,.MILLI.,.METRE.);
+#27= IFCSIUNIT(*,.PLANEANGLEUNIT.,$,.RADIAN.);
+#28= IFCSIUNIT(*,.TIMEUNIT.,$,.SECOND.);
+#29= IFCRELAGGREGATES('0FiU77bof8kRc6oB_1yeSo',#6,'Project Container','Project Container for Buildings',#24,(#22));
+#30= IFCRECTANGLEPROFILEDEF(.AREA.,'Rect',#17,500.0,1000.0);
+#31= IFCGENERALPROFILEPROPERTIES($,#30,$,$,$,$,$);
+#33= IFCCARTESIANPOINT((0.0,0.0,0.0));
+#34= IFCAXIS2PLACEMENT3D(#33,$,$);
+#35= IFCDIRECTION((0.0,0.0,1.0));
+#36= IFCEXTRUDEDAREASOLID(#30,#34,#35,2000.0);
+#37= IFCSHAPEREPRESENTATION(#11,'Body','SweptSolid',(#36));
+#38= IFCPRODUCTDEFINITIONSHAPE($,$,(#37));
+#39= IFCFLOWTERMINAL('38aKCeXYzEBhCGo0PsSTrc',#6,$,$,$,#41,#38,$);
+#40= IFCAXIS2PLACEMENT3D(#8,$,$);
+#41= IFCLOCALPLACEMENT(#21,#40);
+#42= IFCAIRTERMINALTYPE('0coZOGT1jFsQK2HKUxy6Gw',#6,'MyAirTerminalType',$,$,$,$,$,$,.DIFFUSER.);
+#43= IFCRELDEFINESBYTYPE('1pnhHoRx54MP92WpvSa5Fb',#6,$,$,(#39),#42);
+ENDSEC;
+
+END-ISO-10303-21;
+
