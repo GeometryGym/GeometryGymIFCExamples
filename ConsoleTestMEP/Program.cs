@@ -22,17 +22,17 @@ namespace ConsoleTestMEP
 			string path = Path.Combine(di.FullName, "examples");
 			if (!Directory.Exists(path))
 				Directory.CreateDirectory(path);
-			Generate(TypeIFC.AirTerminal, Schema.IFC2x3, path);
-			Generate(TypeIFC.AirTerminal, Schema.IFC4A1, path);
-			Generate(TypeIFC.Chiller, Schema.IFC2x3, path);
-			Generate(TypeIFC.Chiller, Schema.IFC4A1, path);
-			Generate(TypeIFC.ElectricPoint, Schema.IFC2x3, path);
+			Generate(TypeIFC.AirTerminal, ReleaseVersion.IFC2x3, path);
+			Generate(TypeIFC.AirTerminal, ReleaseVersion.IFC4A1, path);
+			Generate(TypeIFC.Chiller, ReleaseVersion.IFC2x3, path);
+			Generate(TypeIFC.Chiller, ReleaseVersion.IFC4A1, path);
+			Generate(TypeIFC.ElectricPoint, ReleaseVersion.IFC2x3, path);
 
 		}
 		internal enum TypeIFC { Chiller, AirTerminal, ElectricPoint };
-		static void Generate(TypeIFC type, Schema schema, string path)
+		static void Generate(TypeIFC type, ReleaseVersion release, string path)
 		{
-			DatabaseIfc db = new DatabaseIfc(true,schema);
+			DatabaseIfc db = new DatabaseIfc(true,release);
 			IfcBuilding building = new IfcBuilding(db, "IfcBuilding") { };
 			IfcProject project = new IfcProject(building, "IfcProject", IfcUnitAssignment.Length.Millimetre) { };
 
@@ -43,20 +43,20 @@ namespace ConsoleTestMEP
 			if (type == TypeIFC.Chiller)
 			{
 				IfcChiller chiller = new IfcChiller(building, null, rep, null) { PredefinedType = IfcChillerTypeEnum.AIRCOOLED };
-				if(schema == Schema.IFC2x3)
+				if(release == ReleaseVersion.IFC2x3)
 					chiller.RelatingType = new IfcChillerType(db, "MyChillerType", IfcChillerTypeEnum.AIRCOOLED);
 			}
 			else if (type == TypeIFC.AirTerminal)
 			{
 				IfcAirTerminal terminal = new IfcAirTerminal(building, null, rep, null) { PredefinedType = IfcAirTerminalTypeEnum.DIFFUSER };
-				if (schema == Schema.IFC2x3)
+				if (release == ReleaseVersion.IFC2x3)
 					terminal.RelatingType = new IfcAirTerminalType(db, "MyAirTerminalType", IfcAirTerminalTypeEnum.DIFFUSER);
 			}
 			else
 			{
 				IfcElectricDistributionPoint point = new IfcElectricDistributionPoint(building, null, rep, null) { DistributionPointFunction = IfcElectricDistributionPointFunctionEnum.DISTRIBUTIONBOARD };
 			}
-			db.WriteFile(Path.Combine(path, type.ToString() + " " + schema.ToString() + ".ifc"));
+			db.WriteFile(Path.Combine(path, type.ToString() + " " + release.ToString() + ".ifc"));
 		}
 	}
 }
