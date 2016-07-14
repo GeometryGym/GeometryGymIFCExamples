@@ -11,6 +11,20 @@ namespace testConsole
 {
 	class Program
 	{
+		internal class MyElement
+		{
+			internal string mMark = "", mDescription = "", mSection = "", mGrade = "";
+			internal double mLength = 0;
+			internal int mQuantity = 1;
+			internal MyElement(string mark, string description, string section, string grade, double length)
+			{
+				mMark = mark;
+				mDescription = description;
+				mSection = section;
+				mGrade = grade;
+				mLength = length;
+			}
+		}
 		static void Main(string[] args) //Example as requested at http://forums.autodesk.com/t5/revit-api/opensource-api-for-reading-ifc-files/m-p/6435644#M17340
 		{
 			DirectoryInfo di = Directory.GetParent(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
@@ -20,43 +34,50 @@ namespace testConsole
 			DatabaseIfc db = new DatabaseIfc(filename);
 			IfcProject project = db.Project;
 			List<IfcBuildingElement> elements = project.Extract<IfcBuildingElement>();
-			Console.WriteLine("Mark\tDescription\tSection\tGrade\tLength");//\tQty);
+			Dictionary<string, MyElement> dictionary = new Dictionary<string, MyElement>();
 			foreach(IfcBuildingElement element in elements)
 			{
 				string desc = (element as IfcColumn != null ? "COL" : (element as IfcBeam != null ? "BEAM" : ""));
 
-				//IfcMaterial material = element.MaterialSelect as IfcMaterial;
-				//string grade = (material == null ? "" : material.Name);
-				string grade = "";
-				double length = 0;
-				foreach(IfcRelDefinesByProperties rdp in element.IsDefinedBy)
+				string mark = element.Tag;
+				if (!string.IsNullOrEmpty(desc))
 				{
-					IfcPropertySet pset = rdp.RelatingPropertyDefinition as IfcPropertySet;
-					if (pset == null)
-						continue;
-					foreach(IfcProperty property in pset.HasProperties)
+					if (dictionary.ContainsKey(mark))
+						dictionary[mark].mQuantity++;
+					else
 					{
-						IfcPropertySingleValue psv = property as IfcPropertySingleValue;
-						if (psv == null)
-							continue;
-						if(string.Compare("Grade",psv.Name) == 0)
+						string grade = "";
+						double length = 0;
+						foreach (IfcRelDefinesByProperties rdp in element.IsDefinedBy)
 						{
-							grade = psv.NominalValue.Value.ToString();
+							IfcPropertySet pset = rdp.RelatingPropertyDefinition as IfcPropertySet;
+							if (pset == null)
+								continue;
+							foreach (IfcProperty property in pset.HasProperties)
+							{
+								IfcPropertySingleValue psv = property as IfcPropertySingleValue;
+								if (psv == null)
+									continue;
+								if (string.Compare("Grade", psv.Name) == 0)
+								{
+									grade = psv.NominalValue.Value.ToString();
+								}
+								else if (string.Compare("Length", psv.Name) == 0)
+								{
+									IfcLengthMeasure lengthmeasure = psv.NominalValue as IfcLengthMeasure;
+									if (lengthmeasure != null)
+										length = lengthmeasure.Measure;
+								}
+							}
 						}
-						else if (string.Compare("Length",psv.Name) == 0)
-						{
-							IfcLengthMeasure lengthmeasure = psv.NominalValue as IfcLengthMeasure;
-							if (lengthmeasure != null)
-								length = lengthmeasure.Measure;
-						}
+						dictionary.Add(mark, new MyElement(mark, desc, element.ObjectType, grade, length));
 					}
 				}
-				if(!string.IsNullOrEmpty(desc))
-				{
-					Console.WriteLine(element.Tag + "\t" + desc + "\t" + element.ObjectType + "\t" + grade + "\t" + length);
-				}
 			}
-			
+			Console.WriteLine("Mark\tDescription\tSection\tGrade\tLength\tQty");
+
+			foreach(MyElement element in dictionary.ToList().ConvertAll(x=>x.Value).OrderBy(x => x.mMark))
+				Console.WriteLine(element.mMark + "\t" + element.mDescription + "\t" + element.mSection + "\t" + element.mGrade + "\t" + element.mLength + "\t" + element.mQuantity);
 		}
 		
 		static IfcMaterial extractMaterial(IfcMaterialSelect materialSelect) //To be enabled in opensource Library
