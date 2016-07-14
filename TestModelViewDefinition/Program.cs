@@ -67,6 +67,7 @@ namespace TestModelViewDefinition
 			IfcBeamType beamType = new IfcBeamType(db, "TestBeamType", IfcBeamTypeEnum.BEAM);
 			beamType.MaterialSelect = materialProfileSet; 
 			IfcBeam beam = new IfcBeam(buildingStorey,new IfcLocalPlacement(localPlacement, new IfcAxis2Placement3D(new IfcCartesianPoint(db, 1000, 2000, 0)) { RefDirection = new IfcDirection(db, 0, 1, 0) }),new IfcProductDefinitionShape(new IfcShapeRepresentation(extrudedAreaSolid)));
+			//IfcGeometricRepresentationSubContext
 			beam.RelatingType = beamType;
 			//IfcRelDefinesByType
 
@@ -75,7 +76,6 @@ namespace TestModelViewDefinition
 
 			//IfcActuator
 			//IfcActuatorType
-			//IfcAddress
 			//IfcAdvancedBrep  NOT RV
 			//IfcAdvancedFace   NOT RV
 			//IfcAirTerminal
@@ -86,7 +86,6 @@ namespace TestModelViewDefinition
 			//IfcAirToAirHeatRecoveryType
 			//IfcAlarm
 			//IfcAlarmType
-
 			//IfcArbitraryOpenProfileDef
 			//IfcArbitraryProfileDefWithVoids
 			//IfcAsymmetricIShapeProfileDef  NOT RV
@@ -234,7 +233,6 @@ namespace TestModelViewDefinition
 			//IfcExtendedProperties
 			//IfcExternalInformation
 			//IfcExternalReference
-			//IfcExtrudedAreaSolid
 			//IfcExtrudedAreaSolidTapered  NOT RV
 			//IfcFace  NOT RV
 			//IfcFaceBasedSurfaceModel  NOT RV
@@ -283,8 +281,6 @@ namespace TestModelViewDefinition
 			//IfcGeographicElement
 			//IfcGeographicElementType
 			//IfcGeometricCurveSet
-			//IfcGeometricRepresentationItem
-			//IfcGeometricRepresentationSubContext
 			//IfcGeometricSet
 			//IfcGrid
 			//IfcGridAxis
@@ -450,10 +446,8 @@ namespace TestModelViewDefinition
 			//IfcSensorType
 			//IfcShadingDevice
 			//IfcShadingDeviceType
-			//IfcShapeModel
 			//IfcShapeRepresentation
 			//IfcShellBasedSurfaceModel  NOT RV
-			//IfcSimpleProperty
 			//IfcSimplePropertyTemplate  NOT RV
 			//IfcSlab
 			//IfcSlabElementedCase  NOT RV

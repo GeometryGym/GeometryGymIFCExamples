@@ -3,25 +3,58 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
+using System.IO;
 using GeometryGym.Ifc;
 
 namespace testConsole
 {
 	class Program
 	{
-		static void Main(string[] args)
+		static void Main(string[] args) //Example as requested at http://forums.autodesk.com/t5/revit-api/opensource-api-for-reading-ifc-files/m-p/6435644#M17340
 		{
-			DatabaseIfc db = new DatabaseIfc(Console.In);
+			DirectoryInfo di = Directory.GetParent(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
+			di = Directory.GetParent(di.FullName);
+
+			string filename = Path.Combine(di.FullName, "IFC Model.ifc");
+			DatabaseIfc db = new DatabaseIfc(filename);
 			IfcProject project = db.Project;
 			List<IfcBuildingElement> elements = project.Extract<IfcBuildingElement>();
+			Console.WriteLine("Mark\tDescription\tSection\tGrade\tLength");//\tQty);
 			foreach(IfcBuildingElement element in elements)
 			{
-				double volume = 0.0;
-				IfcMaterial ifcmaterial = extractMaterial(element.MaterialSelect);
-				string material = ifcmaterial == null ? "" : ifcmaterial.Name;
-				
-//                myPart.GetAttribute(“MATERIAL”, ref material);
-	//			myPart.GetAttribute(“VOLUME”, ref volume);
+				string desc = (element as IfcColumn != null ? "COL" : (element as IfcBeam != null ? "BEAM" : ""));
+
+				//IfcMaterial material = element.MaterialSelect as IfcMaterial;
+				//string grade = (material == null ? "" : material.Name);
+				string grade = "";
+				double length = 0;
+				foreach(IfcRelDefinesByProperties rdp in element.IsDefinedBy)
+				{
+					IfcPropertySet pset = rdp.RelatingPropertyDefinition as IfcPropertySet;
+					if (pset == null)
+						continue;
+					foreach(IfcProperty property in pset.HasProperties)
+					{
+						IfcPropertySingleValue psv = property as IfcPropertySingleValue;
+						if (psv == null)
+							continue;
+						if(string.Compare("Grade",psv.Name) == 0)
+						{
+							grade = psv.NominalValue.Value.ToString();
+						}
+						else if (string.Compare("Length",psv.Name) == 0)
+						{
+							IfcLengthMeasure lengthmeasure = psv.NominalValue as IfcLengthMeasure;
+							if (lengthmeasure != null)
+								length = lengthmeasure.Measure;
+						}
+					}
+				}
+				if(!string.IsNullOrEmpty(desc))
+				{
+					Console.WriteLine(element.Tag + "\t" + desc + "\t" + element.ObjectType + "\t" + grade + "\t" + length);
+				}
 			}
 			
 		}
