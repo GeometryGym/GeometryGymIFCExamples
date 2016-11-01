@@ -28,5 +28,7 @@ namespace ConsoleCreateWall
 			// todo implement rhinocommon overload IfcWallStandardCase wallStandardCase = new IfcWallStandardCase(building, wallType, new Line(0, 0, 0, 5000, 0, 0), 2000, 0, true, null) {  };
 
 		}
+		
+		
 	}
 }

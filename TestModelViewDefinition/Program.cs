@@ -53,7 +53,7 @@ namespace TestModelViewDefinition
 			IfcLocalPlacement localPlacement = buildingStorey.Placement as IfcLocalPlacement;
 
 			IfcMaterial material = new IfcMaterial(db, "TestMaterial") { Description = "TestDescription", Category = "TestCategory" };
-			IfcMaterialProperties materialProperties = new IfcMaterialProperties("TestMaterialProperties", material) { ExtendedProperties = new List<IfcProperty>() { new IfcPropertySingleValue(db, "MassDensity", new IfcMassDensityMeasure(1)) } };
+			IfcMaterialProperties materialProperties = new IfcMaterialProperties("TestMaterialProperties", material) { Properties = new List<IfcProperty>() { new IfcPropertySingleValue(db, "MassDensity", new IfcMassDensityMeasure(1)) } };
 			IfcSurfaceStyleShading surfaceStyleShading = new IfcSurfaceStyleShading(new IfcColourRgb(db, "Red", 1, 0, 0));
 			IfcSurfaceStyle surfaceStyle = new IfcSurfaceStyle(surfaceStyleShading,null,null,null,null);
 			IfcMaterialDefinitionRepresentation materialDefinitionRepresentation = new IfcMaterialDefinitionRepresentation(new List<IfcStyledRepresentation>() { new IfcStyledRepresentation(new IfcStyledItem(surfaceStyle, "TestStyledItem")) }, material);

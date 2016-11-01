@@ -13,7 +13,6 @@ namespace testConsole
 		{
 			DatabaseIfc db = new DatabaseIfc(Console.In);
 			IfcProject project = db.Project;
-			
 			Console.Out.Write("Number of Stories in file :" + project.Extract<IfcBuildingStorey>().Count);
 		}
 	}
