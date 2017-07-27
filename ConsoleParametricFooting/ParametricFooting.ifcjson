@@ -1,0 +1,615 @@
+{
+  "HEADER": {
+    "FILE_DESCRIPTION": {
+      "description": "ViewDefinition[notYetAssigned]",
+      "implementation_level": "2;1"
+    },
+    "FILE_NAME": {
+      "name": "C:\\My Work\\Geometry Gym\\source code\\Open Source\\GeometryGymIfcExamples\\ConsoleParametricFooting\\ParametricFooting.ifcjson",
+      "time_stamp": "2017-05-26T11:47:13",
+      "author": "jonm",
+      "organization": "Unknown",
+      "preprocessor_version": "GeometryGymIFC v0.0.15.0 by Geometry Gym Pty Ltd built 2017-05-26T01:44:39",
+      "originating_system": "ConsoleParametricFooting v1.0.0.0",
+      "authorization": "None"
+    },
+    "FILE_SCHEMA": {
+      "schema_identifiers": "IFC4"
+    }
+  },
+  "DATA": [
+    {
+      "type": "IfcProjectLibrary",
+      "id": 11,
+      "GlobalId": "1tAy9Z5K13auyT3YE4aeBM",
+      "Name": "ObjectLibrary",
+      "RepresentationContexts": [
+        {
+          "type": "IfcGeometricRepresentationContext",
+          "id": 24,
+          "ContextType": "Model",
+          "CoordinateSpaceDimension": 3,
+          "Precision": 0.0001,
+          "WorldCoordinateSystem": {
+            "type": "IfcAxis2Placement3D",
+            "id": 26,
+            "Location": {
+              "type": "IfcCartesianPoint",
+              "id": 25,
+              "Coordinates": "0 0 0"
+            }
+          },
+          "TrueNorth": {
+            "type": "IfcDirection",
+            "id": 27,
+            "DirectionRatios": "0 1"
+          },
+          "HasSubContexts": [
+            {
+              "type": "IfcGeometricRepresentationSubContext",
+              "id": 28,
+              "ContextIdentifier": "Body",
+              "ContextType": "Model",
+              "TargetView": "MODEL_VIEW"
+            }
+          ]
+        }
+      ],
+      "UnitsInContext": {
+        "type": "IfcUnitAssignment",
+        "id": 12,
+        "Units": [
+          {
+            "type": "IfcSIUnit",
+            "id": 13,
+            "UnitType": "LENGTHUNIT",
+            "Prefix": "MILLI",
+            "Name": "METRE"
+          },
+          {
+            "type": "IfcSIUnit",
+            "id": 9,
+            "UnitType": "AREAUNIT",
+            "Name": "SQUARE_METRE"
+          },
+          {
+            "type": "IfcSIUnit",
+            "id": 10,
+            "UnitType": "VOLUMEUNIT",
+            "Name": "CUBIC_METRE"
+          },
+          {
+            "type": "IfcSIUnit",
+            "id": 14,
+            "UnitType": "PLANEANGLEUNIT",
+            "Name": "RADIAN"
+          },
+          {
+            "type": "IfcSIUnit",
+            "id": 15,
+            "UnitType": "TIMEUNIT",
+            "Name": "SECOND"
+          }
+        ]
+      },
+      "Declares": [
+        {
+          "type": "IfcRelDeclares",
+          "id": 94,
+          "GlobalId": "1Ivg_Hz5rFvwYZPlIApyiI",
+          "RelatedDefinitions": [
+            {
+              "type": "IfcFootingType",
+              "id": 57,
+              "GlobalId": "05LFc3yRX2SAW8wvz5h7FY",
+              "Name": "PadFooting800x800x300",
+              "HasAssignments": [
+                {
+                  "type": "IfcRelAssignsToProduct",
+                  "id": 93,
+                  "GlobalId": "0M33Wvw_v8D8VUJ7XbBpGP",
+                  "RelatingProduct": {
+                    "type": "IfcFootingType",
+                    "id": 16,
+                    "GlobalId": "3Nlaz12CjCCw_ZR4VWwm$7",
+                    "Name": "PadFootingParametric",
+                    "HasAssociations": [
+                      {
+                        "type": "IfcRelAssociatesConstraint",
+                        "id": 41,
+                        "GlobalId": "0oPUp5p4bDGQ4g$CCJD2Qz",
+                        "RelatingConstraint": {
+                          "type": "IfcMetric",
+                          "id": 34,
+                          "Name": "Length",
+                          "ConstraintGrade": "HARD",
+                          "PropertiesForConstraint": [
+                            {
+                              "type": "IfcResourceConstraintRelationship",
+                              "id": 40,
+                              "RelatedResourceObjects": [
+                                {
+                                  "type": "IfcQuantityLength",
+                                  "id": 31,
+                                  "Name": "Length",
+                                  "LengthValue": 800.0
+                                }
+                              ]
+                            }
+                          ],
+                          "BenchMark": "EQUALTO",
+                          "ReferencePath": {
+                            "type": "IfcReference",
+                            "id": 39,
+                            "AttributeIdentifier": "RepresentationMaps",
+                            "ListPositions": [
+                              1
+                            ],
+                            "InnerReference": {
+                              "type": "IfcReference",
+                              "id": 38,
+                              "AttributeIdentifier": "MappedRepresentation",
+                              "InnerReference": {
+                                "type": "IfcReference",
+                                "id": 37,
+                                "AttributeIdentifier": "Items",
+                                "ListPositions": [
+                                  1
+                                ],
+                                "InnerReference": {
+                                  "type": "IfcReference",
+                                  "id": 36,
+                                  "TypeIdentifier": "IfcExtrudedAreaSolid",
+                                  "AttributeIdentifier": "SweptArea",
+                                  "InnerReference": {
+                                    "type": "IfcReference",
+                                    "id": 35,
+                                    "TypeIdentifier": "IfcRectangleProfileDef",
+                                    "AttributeIdentifier": "XDim"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "IfcRelAssociatesConstraint",
+                        "id": 49,
+                        "GlobalId": "3hr6dDhTfAWgVvmNIfNN3B",
+                        "RelatingConstraint": {
+                          "type": "IfcMetric",
+                          "id": 42,
+                          "Name": "Width",
+                          "ConstraintGrade": "HARD",
+                          "PropertiesForConstraint": [
+                            {
+                              "type": "IfcResourceConstraintRelationship",
+                              "id": 48,
+                              "RelatedResourceObjects": [
+                                {
+                                  "type": "IfcQuantityLength",
+                                  "id": 32,
+                                  "Name": "Width",
+                                  "LengthValue": 800.0
+                                }
+                              ]
+                            }
+                          ],
+                          "BenchMark": "EQUALTO",
+                          "ReferencePath": {
+                            "type": "IfcReference",
+                            "id": 47,
+                            "AttributeIdentifier": "RepresentationMaps",
+                            "ListPositions": [
+                              1
+                            ],
+                            "InnerReference": {
+                              "type": "IfcReference",
+                              "id": 46,
+                              "AttributeIdentifier": "MappedRepresentation",
+                              "InnerReference": {
+                                "type": "IfcReference",
+                                "id": 45,
+                                "AttributeIdentifier": "Items",
+                                "ListPositions": [
+                                  1
+                                ],
+                                "InnerReference": {
+                                  "type": "IfcReference",
+                                  "id": 44,
+                                  "TypeIdentifier": "IfcExtrudedAreaSolid",
+                                  "AttributeIdentifier": "SweptArea",
+                                  "InnerReference": {
+                                    "type": "IfcReference",
+                                    "id": 43,
+                                    "TypeIdentifier": "IfcRectangleProfileDef",
+                                    "AttributeIdentifier": "YDim"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "IfcRelAssociatesConstraint",
+                        "id": 56,
+                        "GlobalId": "0y1ddoImD7U9LxCKTBm4DL",
+                        "RelatingConstraint": {
+                          "type": "IfcMetric",
+                          "id": 50,
+                          "Name": "Height",
+                          "ConstraintGrade": "HARD",
+                          "PropertiesForConstraint": [
+                            {
+                              "type": "IfcResourceConstraintRelationship",
+                              "id": 55,
+                              "RelatedResourceObjects": [
+                                {
+                                  "type": "IfcQuantityLength",
+                                  "id": 33,
+                                  "Name": "Height",
+                                  "LengthValue": 300.0
+                                }
+                              ]
+                            }
+                          ],
+                          "BenchMark": "EQUALTO",
+                          "ReferencePath": {
+                            "type": "IfcReference",
+                            "id": 54,
+                            "AttributeIdentifier": "RepresentationMaps",
+                            "ListPositions": [
+                              1
+                            ],
+                            "InnerReference": {
+                              "type": "IfcReference",
+                              "id": 53,
+                              "AttributeIdentifier": "MappedRepresentation",
+                              "InnerReference": {
+                                "type": "IfcReference",
+                                "id": 52,
+                                "AttributeIdentifier": "Items",
+                                "ListPositions": [
+                                  1
+                                ],
+                                "InnerReference": {
+                                  "type": "IfcReference",
+                                  "id": 51,
+                                  "TypeIdentifier": "IfcExtrudedAreaSolid",
+                                  "AttributeIdentifier": "Depth"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "HasPropertySets": [
+                      {
+                        "type": "IfcElementQuantity",
+                        "id": 30,
+                        "GlobalId": "3ug$MP9bvCTB3m9jJaEZJL",
+                        "Name": "Qto_FootingBaseQuantities",
+                        "Description": "PadFootingParametric",
+                        "Quantities": [
+                          {
+                            "href": 31
+                          },
+                          {
+                            "href": 32
+                          },
+                          {
+                            "href": 33
+                          }
+                        ]
+                      }
+                    ],
+                    "RepresentationMaps": [
+                      {
+                        "type": "IfcRepresentationMap",
+                        "id": 23,
+                        "MappingOrigin": {
+                          "type": "IfcAxis2Placement3D",
+                          "id": 5,
+                          "Location": {
+                            "type": "IfcCartesianPoint",
+                            "id": 1,
+                            "Coordinates": "0 0 0"
+                          }
+                        },
+                        "MappedRepresentation": {
+                          "type": "IfcShapeRepresentation",
+                          "id": 29,
+                          "ContextOfItems": {
+                            "href": 28
+                          },
+                          "RepresentationIdentifier": "Body",
+                          "RepresentationType": "SolidModel",
+                          "Items": [
+                            {
+                              "type": "IfcExtrudedAreaSolid",
+                              "id": 22,
+                              "SweptArea": {
+                                "type": "IfcRectangleProfileDef",
+                                "id": 18,
+                                "ProfileType": "AREA",
+                                "ProfileName": "PadFootingParametric",
+                                "XDim": 800.0,
+                                "YDim": 800.0
+                              },
+                              "Position": {
+                                "type": "IfcAxis2Placement3D",
+                                "id": 20,
+                                "Location": {
+                                  "type": "IfcCartesianPoint",
+                                  "id": 19,
+                                  "Coordinates": "0 0 0"
+                                }
+                              },
+                              "ExtrudedDirection": {
+                                "type": "IfcDirection",
+                                "id": 21,
+                                "DirectionRatios": "0 0 -1"
+                              },
+                              "Depth": 300.0
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "HasPropertySets": [
+                {
+                  "type": "IfcElementQuantity",
+                  "id": 65,
+                  "GlobalId": "3M99rnZzfCCvLv_OSqvVPS",
+                  "Name": "Qto_FootingBaseQuantities",
+                  "Description": "PadFooting800x800x300",
+                  "Quantities": [
+                    {
+                      "type": "IfcQuantityLength",
+                      "id": 66,
+                      "Name": "Length",
+                      "LengthValue": 800.0
+                    },
+                    {
+                      "type": "IfcQuantityLength",
+                      "id": 67,
+                      "Name": "Width",
+                      "LengthValue": 800.0
+                    },
+                    {
+                      "type": "IfcQuantityLength",
+                      "id": 68,
+                      "Name": "Height",
+                      "LengthValue": 300.0
+                    }
+                  ]
+                }
+              ],
+              "RepresentationMaps": [
+                {
+                  "type": "IfcRepresentationMap",
+                  "id": 63,
+                  "MappingOrigin": {
+                    "href": 5
+                  },
+                  "MappedRepresentation": {
+                    "type": "IfcShapeRepresentation",
+                    "id": 64,
+                    "ContextOfItems": {
+                      "href": 28
+                    },
+                    "RepresentationIdentifier": "Body",
+                    "RepresentationType": "SolidModel",
+                    "Items": [
+                      {
+                        "type": "IfcExtrudedAreaSolid",
+                        "id": 62,
+                        "SweptArea": {
+                          "type": "IfcRectangleProfileDef",
+                          "id": 59,
+                          "ProfileType": "AREA",
+                          "ProfileName": "PadFooting800x800x300",
+                          "XDim": 800.0,
+                          "YDim": 800.0
+                        },
+                        "Position": {
+                          "type": "IfcAxis2Placement3D",
+                          "id": 61,
+                          "Location": {
+                            "type": "IfcCartesianPoint",
+                            "id": 60,
+                            "Coordinates": "0 0 0"
+                          }
+                        },
+                        "ExtrudedDirection": {
+                          "href": 21
+                        },
+                        "Depth": 300.0
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "IfcFootingType",
+              "id": 69,
+              "GlobalId": "2zf57xMcHEzAuH79Z_Fj4o",
+              "Name": "PadFooting600x600x250",
+              "HasAssignments": [
+                {
+                  "href": 93
+                }
+              ],
+              "HasPropertySets": [
+                {
+                  "type": "IfcElementQuantity",
+                  "id": 77,
+                  "GlobalId": "3iAOn3wdP6xge3w1aHfox8",
+                  "Name": "Qto_FootingBaseQuantities",
+                  "Description": "PadFooting600x600x250",
+                  "Quantities": [
+                    {
+                      "type": "IfcQuantityLength",
+                      "id": 78,
+                      "Name": "Length",
+                      "LengthValue": 600.0
+                    },
+                    {
+                      "type": "IfcQuantityLength",
+                      "id": 79,
+                      "Name": "Width",
+                      "LengthValue": 600.0
+                    },
+                    {
+                      "type": "IfcQuantityLength",
+                      "id": 80,
+                      "Name": "Height",
+                      "LengthValue": 250.0
+                    }
+                  ]
+                }
+              ],
+              "RepresentationMaps": [
+                {
+                  "type": "IfcRepresentationMap",
+                  "id": 75,
+                  "MappingOrigin": {
+                    "href": 5
+                  },
+                  "MappedRepresentation": {
+                    "type": "IfcShapeRepresentation",
+                    "id": 76,
+                    "ContextOfItems": {
+                      "href": 28
+                    },
+                    "RepresentationIdentifier": "Body",
+                    "RepresentationType": "SolidModel",
+                    "Items": [
+                      {
+                        "type": "IfcExtrudedAreaSolid",
+                        "id": 74,
+                        "SweptArea": {
+                          "type": "IfcRectangleProfileDef",
+                          "id": 71,
+                          "ProfileType": "AREA",
+                          "ProfileName": "PadFooting600x600x250",
+                          "XDim": 600.0,
+                          "YDim": 600.0
+                        },
+                        "Position": {
+                          "type": "IfcAxis2Placement3D",
+                          "id": 73,
+                          "Location": {
+                            "type": "IfcCartesianPoint",
+                            "id": 72,
+                            "Coordinates": "0 0 0"
+                          }
+                        },
+                        "ExtrudedDirection": {
+                          "href": 21
+                        },
+                        "Depth": 250.0
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "IfcFootingType",
+              "id": 81,
+              "GlobalId": "2RnrmxTRrB5PAEa0z5YEW9",
+              "Name": "PadFooting400x400x200",
+              "HasAssignments": [
+                {
+                  "href": 93
+                }
+              ],
+              "HasPropertySets": [
+                {
+                  "type": "IfcElementQuantity",
+                  "id": 89,
+                  "GlobalId": "0czRD1EHDCmvUskzwCvjLk",
+                  "Name": "Qto_FootingBaseQuantities",
+                  "Description": "PadFooting400x400x200",
+                  "Quantities": [
+                    {
+                      "type": "IfcQuantityLength",
+                      "id": 90,
+                      "Name": "Length",
+                      "LengthValue": 400.0
+                    },
+                    {
+                      "type": "IfcQuantityLength",
+                      "id": 91,
+                      "Name": "Width",
+                      "LengthValue": 400.0
+                    },
+                    {
+                      "type": "IfcQuantityLength",
+                      "id": 92,
+                      "Name": "Height",
+                      "LengthValue": 200.0
+                    }
+                  ]
+                }
+              ],
+              "RepresentationMaps": [
+                {
+                  "type": "IfcRepresentationMap",
+                  "id": 87,
+                  "MappingOrigin": {
+                    "href": 5
+                  },
+                  "MappedRepresentation": {
+                    "type": "IfcShapeRepresentation",
+                    "id": 88,
+                    "ContextOfItems": {
+                      "href": 28
+                    },
+                    "RepresentationIdentifier": "Body",
+                    "RepresentationType": "SolidModel",
+                    "Items": [
+                      {
+                        "type": "IfcExtrudedAreaSolid",
+                        "id": 86,
+                        "SweptArea": {
+                          "type": "IfcRectangleProfileDef",
+                          "id": 83,
+                          "ProfileType": "AREA",
+                          "ProfileName": "PadFooting400x400x200",
+                          "XDim": 400.0,
+                          "YDim": 400.0
+                        },
+                        "Position": {
+                          "type": "IfcAxis2Placement3D",
+                          "id": 85,
+                          "Location": {
+                            "type": "IfcCartesianPoint",
+                            "id": 84,
+                            "Coordinates": "0 0 0"
+                          }
+                        },
+                        "ExtrudedDirection": {
+                          "href": 21
+                        },
+                        "Depth": 200.0
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

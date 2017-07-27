@@ -53,10 +53,11 @@ namespace TestModelViewDefinition
 			IfcLocalPlacement localPlacement = buildingStorey.Placement as IfcLocalPlacement;
 
 			IfcMaterial material = new IfcMaterial(db, "TestMaterial") { Description = "TestDescription", Category = "TestCategory" };
-			IfcMaterialProperties materialProperties = new IfcMaterialProperties("TestMaterialProperties", material) { Properties = new List<IfcProperty>() { new IfcPropertySingleValue(db, "MassDensity", new IfcMassDensityMeasure(1)) } };
-			IfcSurfaceStyleShading surfaceStyleShading = new IfcSurfaceStyleShading(new IfcColourRgb(db, "Red", 1, 0, 0));
+			IfcMaterialProperties materialProperties = new IfcMaterialProperties("TestMaterialProperties", material);
+			materialProperties.AddProperty(new IfcPropertySingleValue(db, "MassDensity", new IfcMassDensityMeasure(1)));
+			IfcSurfaceStyleShading surfaceStyleShading = new IfcSurfaceStyleShading(new IfcColourRgb(db, 1, 0, 0) { Name = "Red" });
 			IfcSurfaceStyle surfaceStyle = new IfcSurfaceStyle(surfaceStyleShading,null,null,null,null);
-			IfcMaterialDefinitionRepresentation materialDefinitionRepresentation = new IfcMaterialDefinitionRepresentation(new List<IfcStyledRepresentation>() { new IfcStyledRepresentation(new IfcStyledItem(surfaceStyle, "TestStyledItem")) }, material);
+			IfcMaterialDefinitionRepresentation materialDefinitionRepresentation = new IfcMaterialDefinitionRepresentation(new IfcStyledRepresentation(new IfcStyledItem(surfaceStyle) { Name = "TestStyledItem" }), material);
 
 			IfcIndexedPolyCurve indexedPolyCurve = IPE200Curve(db);
 			IfcArbitraryClosedProfileDef arbitraryClosedProfileDef = new IfcArbitraryClosedProfileDef("IPE200", indexedPolyCurve);

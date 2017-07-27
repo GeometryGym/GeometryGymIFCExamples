@@ -53,9 +53,9 @@ namespace testConsole
 							IfcPropertySet pset = rdp.RelatingPropertyDefinition as IfcPropertySet;
 							if (pset == null)
 								continue;
-							foreach (IfcProperty property in pset.HasProperties)
+							foreach (System.Collections.Generic.KeyValuePair<string, IfcProperty> pair in pset.HasProperties)
 							{
-								IfcPropertySingleValue psv = property as IfcPropertySingleValue;
+								IfcPropertySingleValue psv = pair.Value as IfcPropertySingleValue;
 								if (psv == null)
 									continue;
 								if (string.Compare("Grade", psv.Name) == 0)

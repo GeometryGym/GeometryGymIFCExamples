@@ -23,9 +23,10 @@ namespace ConsoleCreateWall
 			IfcMaterialLayer structure = new IfcMaterialLayer(masonry, 110, "Core");
 			string name = "Double Brick - 270";
 			IfcMaterialLayerSet materialLayerSet = new IfcMaterialLayerSet(new List<IfcMaterialLayer>() { layerFinish, airInfiltrationBarrier, structure }, name);
+			IfcMaterialLayerSetUsage materialLayerSetUsage = new IfcMaterialLayerSetUsage(materialLayerSet, IfcLayerSetDirectionEnum.AXIS2, IfcDirectionSenseEnum.POSITIVE, 0);
 			db.NextObjectRecord = 300;
 			IfcWallType wallType = new IfcWallType(name, materialLayerSet, IfcWallTypeEnum.NOTDEFINED) {  };
-			// todo implement rhinocommon overload IfcWallStandardCase wallStandardCase = new IfcWallStandardCase(building, wallType, new Line(0, 0, 0, 5000, 0, 0), 2000, 0, true, null) {  };
+			IfcWallStandardCase wallStandardCase = new IfcWallStandardCase(building, materialLayerSetUsage, new IfcAxis2Placement3D(new IfcCartesianPoint(db,0,0,0)), 5000, 2000) {  };
 
 		}
 		

@@ -18,20 +18,22 @@ namespace testConsole
 			List<IfcFacetedBrep> breps = new List<IfcFacetedBrep>();
 			foreach(IfcBuildingElement element in elements)
 			{
-				List<IfcRepresentation> reps = element.Representation.Representations;
-				foreach (IfcRepresentation rep in reps)
+				IfcProductRepresentation representation = element.Representation;
+				if (representation != null)
 				{
-					IfcShapeRepresentation sr = rep as IfcShapeRepresentation;
-					if (sr != null)
+					foreach (IfcRepresentation rep in representation.Representations)
 					{
-						List<IfcRepresentationItem> items = sr.Items;
-						foreach (IfcRepresentationItem item in items)
+						IfcShapeRepresentation sr = rep as IfcShapeRepresentation;
+						if (sr != null)
 						{
-							IfcFacetedBrep fb = item as IfcFacetedBrep;
-							if (fb != null)
-								breps.Add(fb);
-						}
+							foreach (IfcRepresentationItem item in sr.Items)
+							{
+								IfcFacetedBrep fb = item as IfcFacetedBrep;
+								if (fb != null)
+									breps.Add(fb);
+							}
 
+						}
 					}
 				}
 			}
