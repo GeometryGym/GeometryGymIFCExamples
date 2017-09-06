@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ifc:ifcXML xsi:schemaLocation="http://www.buildingsmart-tech.org/ifcXML/IFC4/Add1/IFC4_ADD1.xsd" xlmns="http://www.buildingsmart-tech.org/ifcXML/IFC4_ADD1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ifc="http://www.buildingsmart-tech.org/ifcXML/IFC4_ADD1">
+  <IfcProject GlobalId="3K_ZW75E5D8PdHdQv9V0Xs" Name="IfcProject">
+    <OwnerHistory ChangeAction="added" LastModifiedDate="1504741425" CreationDate="1504741425" xsi:type="IfcOwnerHistory" id="i20">
+      <OwningUser xsi:type="IfcPersonAndOrganization">
+        <ThePerson Identification="Jon" xsi:type="IfcPerson" />
+        <TheOrganization Name="HP Inc." xsi:type="IfcOrganization" />
+      </OwningUser>
+      <OwningApplication Version="0.0.15.0" ApplicationFullName="ConsoleCreateSurfaceMember v1.0.0.0" ApplicationIdentifier="ConsoleCreateSurfaceMember v1.0.0.0" xsi:type="IfcApplication">
+        <ApplicationDeveloper Name="Geometry Gym Pty Ltd" xsi:type="IfcOrganization" />
+      </OwningApplication>
+    </OwnerHistory>
+    <IsDecomposedBy>
+      <IfcRelAggregates GlobalId="0d4wgjruTBDfKORReFvDfz" Name="Project Container" Description="Project Container for Buildings">
+        <OwnerHistory xsi:nil="true" href="i20" />
+        <RelatedObjects>
+          <IfcBuilding GlobalId="2DVuP2hXT0AxRB_TlBI2mw" Name="IfcBuilding">
+            <OwnerHistory xsi:nil="true" href="i20" />
+            <Placement xsi:type="IfcLocalPlacement">
+              <RelativePlacement xsi:type="IfcAxis2Placement3D">
+                <Location Coordinates="0 0 0" xsi:type="IfcCartesianPoint" />
+                <Axis DirectionRatios="0 0 1" xsi:type="IfcDirection" />
+                <RefDirection DirectionRatios="1 0 0" xsi:type="IfcDirection" />
+              </RelativePlacement>
+            </Placement>
+            <ServicedBySystems>
+              <IfcRelServicesBuildings GlobalId="2uoVCukTL3SRYm8xcVDrJ4" Name="Analysis Model">
+                <OwnerHistory xsi:nil="true" href="i20" />
+                <RelatingSystem GlobalId="08kjN19j55LfWnrmLPUJhY" Name="Analysis Model" PredefinedType="loading_3d" xsi:type="IfcStructuralAnalysisModel">
+                  <OwnerHistory xsi:nil="true" href="i20" />
+                  <IsGroupedBy>
+                    <IfcRelAssignsToGroup GlobalId="1WhYyGSsv4DfqelvwJP3fz">
+                      <OwnerHistory xsi:nil="true" href="i20" />
+                      <RelatedObjects>
+                        <IfcStructuralSurfaceMember GlobalId="2fqKTWbQTAlQ2dyEjQE3M_" Name="1">
+                          <OwnerHistory xsi:nil="true" href="i20" />
+                          <HasAssociations>
+                            <IfcRelAssociatesMaterial GlobalId="0289VF_GrCDw2_l0HQCWed" Name="MatAssoc" Description="Material Associates">
+                              <OwnerHistory xsi:nil="true" href="i20" />
+                              <RelatingMaterial Name="Concrete" xsi:type="IfcMaterial" />
+                            </IfcRelAssociatesMaterial>
+                          </HasAssociations>
+                          <Placement xsi:type="IfcLocalPlacement" id="i35">
+                            <RelativePlacement xsi:type="IfcAxis2Placement3D">
+                              <Location Coordinates="0 0 0" xsi:type="IfcCartesianPoint" />
+                            </RelativePlacement>
+                          </Placement>
+                          <Representation xsi:type="IfcProductRepresentation">
+                            <Representations>
+                              <IfcTopologyRepresentation RepresentationIdentifier="Reference" RepresentationType="Face">
+                                <ContextOfItems xsi:nil="true" href="i96" />
+                                <Items>
+                                  <IfcFaceSurface>
+                                    <Bounds>
+                                      <IfcFaceOuterBound Orientation="true">
+                                        <Bound xsi:type="IfcPolyloop">
+                                          <Polygon>
+                                            <IfcCartesianPoint Coordinates="-3968.75 -1309.6875 3000" />
+                                            <IfcCartesianPoint Coordinates="3071.25 -1309.6875 3000" />
+                                            <IfcCartesianPoint Coordinates="3071.25 -1309.6875 0" />
+                                            <IfcCartesianPoint Coordinates="-3968.75 -1309.6875 0" />
+                                          </Polygon>
+                                        </Bound>
+                                      </IfcFaceOuterBound>
+                                      <IfcFaceBound Orientation="true">
+                                        <Bound xsi:type="IfcPolyloop">
+                                          <Polygon>
+                                            <IfcCartesianPoint Coordinates="551.25 -1309.6875 1000" />
+                                            <IfcCartesianPoint Coordinates="-448.75 -1309.6875 1000" />
+                                            <IfcCartesianPoint Coordinates="-448.75 -1309.6875 2000" />
+                                            <IfcCartesianPoint Coordinates="551.25 -1309.6875 2000" />
+                                          </Polygon>
+                                        </Bound>
+                                      </IfcFaceBound>
+                                    </Bounds>
+                                  </IfcFaceSurface>
+                                </Items>
+                              </IfcTopologyRepresentation>
+                            </Representations>
+                          </Representation>
+                        </IfcStructuralSurfaceMember>
+                      </RelatedObjects>
+                    </IfcRelAssignsToGroup>
+                  </IsGroupedBy>
+                  <SharedPlacement xsi:nil="true" href="i35" />
+                </RelatingSystem>
+              </IfcRelServicesBuildings>
+            </ServicedBySystems>
+            <BuildingAddress Town="Unknown" PostalCode="Unknown" Country="Unknown" xsi:type="IfcPostalAddress">
+              <AddressLines>
+                <IfcLabel-wrapper>Unknown</IfcLabel-wrapper>
+              </AddressLines>
+            </BuildingAddress>
+          </IfcBuilding>
+        </RelatedObjects>
+      </IfcRelAggregates>
+    </IsDecomposedBy>
+    <RepresentationContexts>
+      <IfcGeometricRepresentationContext ContextType="Model" CoordinateSpaceDimension="3" Precision="0.0001">
+        <WorldCoordinateSystem xsi:type="IfcAxis2Placement3D">
+          <Location Coordinates="0 0 0" xsi:type="IfcCartesianPoint" />
+        </WorldCoordinateSystem>
+        <TrueNorth DirectionRatios="0 1" xsi:type="IfcDirection" />
+        <HasSubContexts>
+          <IfcGeometricRepresentationSubContext ContextIdentifier="Body" ContextType="Model" TargetView="model_view" id="i96" />
+        </HasSubContexts>
+      </IfcGeometricRepresentationContext>
+    </RepresentationContexts>
+    <UnitsInContext xsi:type="IfcUnitAssignment">
+      <Units>
+        <IfcSIUnit UnitType="lengthunit" Prefix="milli" Name="metre" />
+        <IfcSIUnit UnitType="areaunit" Name="square_metre" />
+        <IfcSIUnit UnitType="volumeunit" Name="cubic_metre" id="i10" />
+        <IfcSIUnit UnitType="planeangleunit" Name="radian" />
+        <IfcSIUnit UnitType="timeunit" Name="second" />
+        <IfcSIUnit UnitType="forceunit" Name="newton" id="i53" />
+        <IfcDerivedUnit UnitType="torqueunit">
+          <Elements>
+            <IfcDerivedUnitElement Exponent="1">
+              <Unit xsi:nil="true" href="i53" />
+            </IfcDerivedUnitElement>
+            <IfcDerivedUnitElement Exponent="1">
+              <Unit UnitType="lengthunit" Name="metre" xsi:type="IfcSIUnit" id="i8" />
+            </IfcDerivedUnitElement>
+          </Elements>
+        </IfcDerivedUnit>
+        <IfcDerivedUnit UnitType="linearforceunit">
+          <Elements>
+            <IfcDerivedUnitElement Exponent="1">
+              <Unit xsi:nil="true" href="i53" />
+            </IfcDerivedUnitElement>
+            <IfcDerivedUnitElement Exponent="-1">
+              <Unit xsi:nil="true" href="i8" />
+            </IfcDerivedUnitElement>
+          </Elements>
+        </IfcDerivedUnit>
+        <IfcDerivedUnit UnitType="linearmomentunit">
+          <Elements>
+            <IfcDerivedUnitElement Exponent="1">
+              <Unit xsi:nil="true" href="i53" />
+            </IfcDerivedUnitElement>
+          </Elements>
+        </IfcDerivedUnit>
+        <IfcDerivedUnit UnitType="planarforceunit">
+          <Elements>
+            <IfcDerivedUnitElement Exponent="1">
+              <Unit xsi:nil="true" href="i53" />
+            </IfcDerivedUnitElement>
+            <IfcDerivedUnitElement Exponent="-2">
+              <Unit xsi:nil="true" href="i8" />
+            </IfcDerivedUnitElement>
+          </Elements>
+        </IfcDerivedUnit>
+        <IfcDerivedUnit UnitType="modulusofelasticityunit">
+          <Elements>
+            <IfcDerivedUnitElement Exponent="1">
+              <Unit xsi:nil="true" href="i53" />
+            </IfcDerivedUnitElement>
+            <IfcDerivedUnitElement Exponent="-2">
+              <Unit xsi:nil="true" href="i8" />
+            </IfcDerivedUnitElement>
+          </Elements>
+        </IfcDerivedUnit>
+        <IfcDerivedUnit UnitType="accelerationunit">
+          <Elements>
+            <IfcDerivedUnitElement Exponent="1">
+              <Unit xsi:nil="true" href="i8" />
+            </IfcDerivedUnitElement>
+            <IfcDerivedUnitElement Exponent="-2">
+              <Unit UnitType="timeunit" Name="second" xsi:type="IfcSIUnit" />
+            </IfcDerivedUnitElement>
+          </Elements>
+        </IfcDerivedUnit>
+        <IfcSIUnit UnitType="pressureunit" Name="pascal" />
+        <IfcDerivedUnit UnitType="sectionmodulusunit">
+          <Elements>
+            <IfcDerivedUnitElement Exponent="3">
+              <Unit xsi:nil="true" href="i8" />
+            </IfcDerivedUnitElement>
+          </Elements>
+        </IfcDerivedUnit>
+        <IfcDerivedUnit UnitType="momentofinertiaunit">
+          <Elements>
+            <IfcDerivedUnitElement Exponent="4">
+              <Unit xsi:nil="true" href="i8" />
+            </IfcDerivedUnitElement>
+          </Elements>
+        </IfcDerivedUnit>
+        <IfcSIUnit UnitType="massunit" Prefix="kilo" Name="gram" id="i77" />
+        <IfcDerivedUnit UnitType="massdensityunit">
+          <Elements>
+            <IfcDerivedUnitElement Exponent="1">
+              <Unit xsi:nil="true" href="i77" />
+            </IfcDerivedUnitElement>
+            <IfcDerivedUnitElement Exponent="-1">
+              <Unit xsi:nil="true" href="i10" />
+            </IfcDerivedUnitElement>
+          </Elements>
+        </IfcDerivedUnit>
+        <IfcSIUnit UnitType="thermodynamictemperatureunit" Name="kelvin" id="i81" />
+        <IfcDerivedUnit UnitType="thermalexpansioncoefficientunit">
+          <Elements>
+            <IfcDerivedUnitElement Exponent="-1">
+              <Unit xsi:nil="true" href="i81" />
+            </IfcDerivedUnitElement>
+          </Elements>
+        </IfcDerivedUnit>
+        <IfcDerivedUnit UnitType="linearstiffnessunit">
+          <Elements>
+            <IfcDerivedUnitElement Exponent="1">
+              <Unit xsi:nil="true" href="i53" />
+            </IfcDerivedUnitElement>
+            <IfcDerivedUnitElement Exponent="-1">
+              <Unit xsi:nil="true" href="i8" />
+            </IfcDerivedUnitElement>
+          </Elements>
+        </IfcDerivedUnit>
+        <IfcDerivedUnit UnitType="rotationalstiffnessunit">
+          <Elements>
+            <IfcDerivedUnitElement Exponent="1">
+              <Unit xsi:nil="true" href="i53" />
+            </IfcDerivedUnitElement>
+            <IfcDerivedUnitElement Exponent="1">
+              <Unit xsi:nil="true" href="i8" />
+            </IfcDerivedUnitElement>
+            <IfcDerivedUnitElement Exponent="-1">
+              <Unit UnitType="planeangleunit" Name="radian" xsi:type="IfcSIUnit" />
+            </IfcDerivedUnitElement>
+          </Elements>
+        </IfcDerivedUnit>
+      </Units>
+    </UnitsInContext>
+  </IfcProject>
+</ifc:ifcXML>

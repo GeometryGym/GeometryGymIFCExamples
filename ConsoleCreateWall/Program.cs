@@ -27,9 +27,6 @@ namespace ConsoleCreateWall
 			db.NextObjectRecord = 300;
 			IfcWallType wallType = new IfcWallType(name, materialLayerSet, IfcWallTypeEnum.NOTDEFINED) {  };
 			IfcWallStandardCase wallStandardCase = new IfcWallStandardCase(building, materialLayerSetUsage, new IfcAxis2Placement3D(new IfcCartesianPoint(db,0,0,0)), 5000, 2000) {  };
-
 		}
-		
-		
 	}
 }

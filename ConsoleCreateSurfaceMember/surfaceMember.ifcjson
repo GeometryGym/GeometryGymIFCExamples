@@ -1,0 +1,576 @@
+{
+  "HEADER": {
+    "FILE_DESCRIPTION": {
+      "description": "ViewDefinition[DesignTransferView_V1]",
+      "implementation_level": "2;1"
+    },
+    "FILE_NAME": {
+      "name": "C:\\My Work\\Geometry Gym\\source code\\Open Source\\GeometryGymIfcExamples\\ConsoleCreateSurfaceMember\\surfaceMember.ifcjson",
+      "time_stamp": "2017-09-07T09:43:45",
+      "author": "Jon",
+      "organization": "HP Inc.",
+      "preprocessor_version": "GeometryGymIFC v0.0.15.0 by Geometry Gym Pty Ltd built 2017-07-27T16:17:24",
+      "originating_system": "ConsoleCreateSurfaceMember v1.0.0.0",
+      "authorization": "None"
+    },
+    "FILE_SCHEMA": {
+      "schema_identifiers": "IFC4"
+    }
+  },
+  "DATA": [
+    {
+      "type": "IfcProject",
+      "id": 24,
+      "GlobalId": "3K_ZW75E5D8PdHdQv9V0Xs",
+      "OwnerHistory": {
+        "type": "IfcOwnerHistory",
+        "id": 20,
+        "OwningUser": {
+          "type": "IfcPersonAndOrganization",
+          "id": 17,
+          "ThePerson": {
+            "type": "IfcPerson",
+            "id": 15,
+            "Identification": "Jon"
+          },
+          "TheOrganization": {
+            "type": "IfcOrganization",
+            "id": 16,
+            "Name": "HP Inc."
+          }
+        },
+        "OwningApplication": {
+          "type": "IfcApplication",
+          "id": 18,
+          "ApplicationDeveloper": {
+            "type": "IfcOrganization",
+            "id": 19,
+            "Name": "Geometry Gym Pty Ltd"
+          },
+          "Version": "0.0.15.0",
+          "ApplicationFullName": "ConsoleCreateSurfaceMember v1.0.0.0",
+          "ApplicationIdentifier": "ConsoleCreateSurfaceMember v1.0.0.0"
+        },
+        "ChangeAction": "ADDED",
+        "LastModifiedDate": 1504741425,
+        "CreationDate": 1504741425
+      },
+      "Name": "IfcProject",
+      "IsDecomposedBy": [
+        {
+          "type": "IfcRelAggregates",
+          "id": 29,
+          "GlobalId": "0d4wgjruTBDfKORReFvDfz",
+          "OwnerHistory": {
+            "href": 20
+          },
+          "Name": "Project Container",
+          "Description": "Project Container for Buildings",
+          "RelatedObjects": [
+            {
+              "type": "IfcBuilding",
+              "id": 14,
+              "GlobalId": "2DVuP2hXT0AxRB_TlBI2mw",
+              "OwnerHistory": {
+                "href": 20
+              },
+              "Name": "IfcBuilding",
+              "Placement": {
+                "type": "IfcLocalPlacement",
+                "id": 13,
+                "RelativePlacement": {
+                  "type": "IfcAxis2Placement3D",
+                  "id": 12,
+                  "Location": {
+                    "type": "IfcCartesianPoint",
+                    "id": 11,
+                    "Coordinates": "0 0 0"
+                  },
+                  "Axis": {
+                    "type": "IfcDirection",
+                    "id": 4,
+                    "DirectionRatios": "0 0 1"
+                  },
+                  "RefDirection": {
+                    "type": "IfcDirection",
+                    "id": 2,
+                    "DirectionRatios": "1 0 0"
+                  }
+                }
+              },
+              "ContainsElements": [
+                {
+                  "type": "IfcRelContainedInSpatialStructure",
+                  "id": 21,
+                  "GlobalId": "2plHx_Spb5A9mvV3NTK_Qu",
+                  "OwnerHistory": {
+                    "href": 20
+                  },
+                  "Name": "Building",
+                  "Description": "Building Container for Elements",
+                  "RelatedElements": []
+                }
+              ],
+              "ServicedBySystems": [
+                {
+                  "type": "IfcRelServicesBuildings",
+                  "id": 34,
+                  "GlobalId": "2uoVCukTL3SRYm8xcVDrJ4",
+                  "OwnerHistory": {
+                    "href": 20
+                  },
+                  "Name": "Analysis Model",
+                  "RelatingSystem": {
+                    "type": "IfcStructuralAnalysisModel",
+                    "id": 32,
+                    "GlobalId": "08kjN19j55LfWnrmLPUJhY",
+                    "OwnerHistory": {
+                      "href": 20
+                    },
+                    "Name": "Analysis Model",
+                    "IsGroupedBy": [
+                      {
+                        "type": "IfcRelAssignsToGroup",
+                        "id": 33,
+                        "GlobalId": "1WhYyGSsv4DfqelvwJP3fz",
+                        "OwnerHistory": {
+                          "href": 20
+                        },
+                        "RelatedObjects": [
+                          {
+                            "type": "IfcStructuralSurfaceMember",
+                            "id": 52,
+                            "GlobalId": "2fqKTWbQTAlQ2dyEjQE3M_",
+                            "OwnerHistory": {
+                              "href": 20
+                            },
+                            "Name": "1",
+                            "HasAssociations": [
+                              {
+                                "type": "IfcRelAssociatesMaterial",
+                                "id": 31,
+                                "GlobalId": "0289VF_GrCDw2_l0HQCWed",
+                                "OwnerHistory": {
+                                  "href": 20
+                                },
+                                "Name": "MatAssoc",
+                                "Description": "Material Associates",
+                                "RelatingMaterial": {
+                                  "type": "IfcMaterial",
+                                  "id": 30,
+                                  "Name": "Concrete"
+                                }
+                              }
+                            ],
+                            "Placement": {
+                              "type": "IfcLocalPlacement",
+                              "id": 35,
+                              "RelativePlacement": {
+                                "type": "IfcAxis2Placement3D",
+                                "id": 5,
+                                "Location": {
+                                  "type": "IfcCartesianPoint",
+                                  "id": 1,
+                                  "Coordinates": "0 0 0"
+                                }
+                              }
+                            },
+                            "Representation": {
+                              "type": "IfcProductRepresentation",
+                              "id": 98,
+                              "Representations": [
+                                {
+                                  "type": "IfcTopologyRepresentation",
+                                  "id": 97,
+                                  "ContextOfItems": {
+                                    "type": "IfcGeometricRepresentationSubContext",
+                                    "id": 96,
+                                    "ContextIdentifier": "Body",
+                                    "ContextType": "Model",
+                                    "TargetView": "MODEL_VIEW"
+                                  },
+                                  "RepresentationIdentifier": "Reference",
+                                  "RepresentationType": "Face",
+                                  "Items": [
+                                    {
+                                      "type": "IfcFaceSurface",
+                                      "id": 51
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            "Thickness": 200.0
+                          }
+                        ]
+                      }
+                    ],
+                    "PredefinedType": "LOADING_3D",
+                    "SharedPlacement": {
+                      "href": 35
+                    }
+                  }
+                }
+              ],
+              "BuildingAddress": {
+                "type": "IfcPostalAddress",
+                "id": 23
+              }
+            }
+          ]
+        }
+      ],
+      "RepresentationContexts": [
+        {
+          "type": "IfcGeometricRepresentationContext",
+          "id": 92,
+          "ContextType": "Model",
+          "CoordinateSpaceDimension": 3,
+          "Precision": 0.0001,
+          "WorldCoordinateSystem": {
+            "type": "IfcAxis2Placement3D",
+            "id": 94,
+            "Location": {
+              "type": "IfcCartesianPoint",
+              "id": 93,
+              "Coordinates": "0 0 0"
+            }
+          },
+          "TrueNorth": {
+            "type": "IfcDirection",
+            "id": 95,
+            "DirectionRatios": "0 1"
+          },
+          "HasSubContexts": [
+            {
+              "href": 96
+            }
+          ]
+        }
+      ],
+      "UnitsInContext": {
+        "type": "IfcUnitAssignment",
+        "id": 25,
+        "Units": [
+          {
+            "type": "IfcSIUnit",
+            "id": 26,
+            "UnitType": "LENGTHUNIT",
+            "Prefix": "MILLI",
+            "Name": "METRE"
+          },
+          {
+            "type": "IfcSIUnit",
+            "id": 9,
+            "UnitType": "AREAUNIT",
+            "Name": "SQUARE_METRE"
+          },
+          {
+            "type": "IfcSIUnit",
+            "id": 10,
+            "UnitType": "VOLUMEUNIT",
+            "Name": "CUBIC_METRE"
+          },
+          {
+            "type": "IfcSIUnit",
+            "id": 27,
+            "UnitType": "PLANEANGLEUNIT",
+            "Name": "RADIAN"
+          },
+          {
+            "type": "IfcSIUnit",
+            "id": 28,
+            "UnitType": "TIMEUNIT",
+            "Name": "SECOND"
+          },
+          {
+            "type": "IfcSIUnit",
+            "id": 53,
+            "UnitType": "FORCEUNIT",
+            "Name": "NEWTON"
+          },
+          {
+            "type": "IfcDerivedUnit",
+            "id": 56,
+            "Elements": [
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 54,
+                "Unit": {
+                  "href": 53
+                },
+                "Exponent": 1
+              },
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 55,
+                "Unit": {
+                  "type": "IfcSIUnit",
+                  "id": 8,
+                  "UnitType": "LENGTHUNIT",
+                  "Name": "METRE"
+                },
+                "Exponent": 1
+              }
+            ],
+            "UnitType": "TORQUEUNIT"
+          },
+          {
+            "type": "IfcDerivedUnit",
+            "id": 59,
+            "Elements": [
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 57,
+                "Unit": {
+                  "href": 53
+                },
+                "Exponent": 1
+              },
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 58,
+                "Unit": {
+                  "href": 8
+                },
+                "Exponent": -1
+              }
+            ],
+            "UnitType": "LINEARFORCEUNIT"
+          },
+          {
+            "type": "IfcDerivedUnit",
+            "id": 61,
+            "Elements": [
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 60,
+                "Unit": {
+                  "href": 53
+                },
+                "Exponent": 1
+              }
+            ],
+            "UnitType": "LINEARMOMENTUNIT"
+          },
+          {
+            "type": "IfcDerivedUnit",
+            "id": 64,
+            "Elements": [
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 62,
+                "Unit": {
+                  "href": 53
+                },
+                "Exponent": 1
+              },
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 63,
+                "Unit": {
+                  "href": 8
+                },
+                "Exponent": -2
+              }
+            ],
+            "UnitType": "PLANARFORCEUNIT"
+          },
+          {
+            "type": "IfcDerivedUnit",
+            "id": 67,
+            "Elements": [
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 65,
+                "Unit": {
+                  "href": 53
+                },
+                "Exponent": 1
+              },
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 66,
+                "Unit": {
+                  "href": 8
+                },
+                "Exponent": -2
+              }
+            ],
+            "UnitType": "MODULUSOFELASTICITYUNIT"
+          },
+          {
+            "type": "IfcDerivedUnit",
+            "id": 71,
+            "Elements": [
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 69,
+                "Unit": {
+                  "href": 8
+                },
+                "Exponent": 1
+              },
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 70,
+                "Unit": {
+                  "type": "IfcSIUnit",
+                  "id": 68,
+                  "UnitType": "TIMEUNIT",
+                  "Name": "SECOND"
+                },
+                "Exponent": -2
+              }
+            ],
+            "UnitType": "ACCELERATIONUNIT"
+          },
+          {
+            "type": "IfcSIUnit",
+            "id": 72,
+            "UnitType": "PRESSUREUNIT",
+            "Name": "PASCAL"
+          },
+          {
+            "type": "IfcDerivedUnit",
+            "id": 74,
+            "Elements": [
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 73,
+                "Unit": {
+                  "href": 8
+                },
+                "Exponent": 3
+              }
+            ],
+            "UnitType": "SECTIONMODULUSUNIT"
+          },
+          {
+            "type": "IfcDerivedUnit",
+            "id": 76,
+            "Elements": [
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 75,
+                "Unit": {
+                  "href": 8
+                },
+                "Exponent": 4
+              }
+            ],
+            "UnitType": "MOMENTOFINERTIAUNIT"
+          },
+          {
+            "type": "IfcSIUnit",
+            "id": 77,
+            "UnitType": "MASSUNIT",
+            "Prefix": "KILO",
+            "Name": "GRAM"
+          },
+          {
+            "type": "IfcDerivedUnit",
+            "id": 80,
+            "Elements": [
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 78,
+                "Unit": {
+                  "href": 77
+                },
+                "Exponent": 1
+              },
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 79,
+                "Unit": {
+                  "href": 10
+                },
+                "Exponent": -1
+              }
+            ],
+            "UnitType": "MASSDENSITYUNIT"
+          },
+          {
+            "type": "IfcSIUnit",
+            "id": 81,
+            "UnitType": "THERMODYNAMICTEMPERATUREUNIT",
+            "Name": "KELVIN"
+          },
+          {
+            "type": "IfcDerivedUnit",
+            "id": 83,
+            "Elements": [
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 82,
+                "Unit": {
+                  "href": 81
+                },
+                "Exponent": -1
+              }
+            ],
+            "UnitType": "THERMALEXPANSIONCOEFFICIENTUNIT"
+          },
+          {
+            "type": "IfcDerivedUnit",
+            "id": 86,
+            "Elements": [
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 84,
+                "Unit": {
+                  "href": 53
+                },
+                "Exponent": 1
+              },
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 85,
+                "Unit": {
+                  "href": 8
+                },
+                "Exponent": -1
+              }
+            ],
+            "UnitType": "LINEARSTIFFNESSUNIT"
+          },
+          {
+            "type": "IfcDerivedUnit",
+            "id": 91,
+            "Elements": [
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 88,
+                "Unit": {
+                  "href": 53
+                },
+                "Exponent": 1
+              },
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 89,
+                "Unit": {
+                  "href": 8
+                },
+                "Exponent": 1
+              },
+              {
+                "type": "IfcDerivedUnitElement",
+                "id": 90,
+                "Unit": {
+                  "type": "IfcSIUnit",
+                  "id": 87,
+                  "UnitType": "PLANEANGLEUNIT",
+                  "Name": "RADIAN"
+                },
+                "Exponent": -1
+              }
+            ],
+            "UnitType": "ROTATIONALSTIFFNESSUNIT"
+          }
+        ]
+      }
+    }
+  ]
+}
