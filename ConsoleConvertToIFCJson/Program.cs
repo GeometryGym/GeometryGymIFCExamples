@@ -12,7 +12,7 @@ namespace ConsoleConvertToIFCJson
 		static void Main(string[] args)
 		{
 			DatabaseIfc db = new DatabaseIfc( Console.In);
-			Console.Out.Write(db.JSON);
+			Console.Out.Write(db.JSON());
 		}
 	}
 }

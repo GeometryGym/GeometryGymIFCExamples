@@ -44,13 +44,13 @@ namespace ConsoleTestMEP
 			{
 				IfcChiller chiller = new IfcChiller(building, null, rep, null) { PredefinedType = IfcChillerTypeEnum.AIRCOOLED };
 				if(release == ReleaseVersion.IFC2x3)
-					chiller.RelatingType = new IfcChillerType(db, "MyChillerType", IfcChillerTypeEnum.AIRCOOLED);
+					chiller.setRelatingType(new IfcChillerType(db, "MyChillerType", IfcChillerTypeEnum.AIRCOOLED));
 			}
 			else if (type == TypeIFC.AirTerminal)
 			{
 				IfcAirTerminal terminal = new IfcAirTerminal(building, null, rep, null) { PredefinedType = IfcAirTerminalTypeEnum.DIFFUSER };
 				if (release == ReleaseVersion.IFC2x3)
-					terminal.RelatingType = new IfcAirTerminalType(db, "MyAirTerminalType", IfcAirTerminalTypeEnum.DIFFUSER);
+					terminal.setRelatingType(new IfcAirTerminalType(db, "MyAirTerminalType", IfcAirTerminalTypeEnum.DIFFUSER));
 			}
 			else
 			{

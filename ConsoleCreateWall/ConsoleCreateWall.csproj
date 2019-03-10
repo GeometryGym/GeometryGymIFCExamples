@@ -34,8 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GeometryGymIFC, Version=0.0.15.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GeometryGymIFC.0.0.15\lib\net45\GeometryGymIFC.dll</HintPath>
+    <Reference Include="GeometryGymIFC, Version=0.0.20.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GeometryGymIFC.0.0.20\lib\net45\GeometryGymIFC.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>

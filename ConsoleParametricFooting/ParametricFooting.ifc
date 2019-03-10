@@ -2,15 +2,15 @@ ISO-10303-21;
 HEADER;
 FILE_DESCRIPTION(('ViewDefinition [notYetAssigned]'),'2;1');
 FILE_NAME(
-/* name */ 'C:\\My Work\\Geometry Gym\\source code\\Open Source\\GeometryGymIfcExamples\\ConsoleParametricFooting\\ParametricFooting.ifc',
-/* time_stamp */ '2017-05-26T11:47:13',
-/* author */ ('jonm'),
+/* name */ 'F:\\My Work\\Geometry Gym\\source code\\Open Source\\GeometryGymIfcExamples\\ConsoleParametricFooting\\ParametricFooting.ifc',
+/* time_stamp */ '2019-03-11T10:43:12',
+/* author */ ('Jon'),
 /* organization */ ('Unknown'),
-/* preprocessor_version */ 'GeometryGymIFC v0.0.15.0 by Geometry Gym Pty Ltd built 2017-05-26T01:44:39',
+/* preprocessor_version */ 'GeometryGymIFC v0.0.20.0 by Geometry Gym Pty Ltd built 2019-03-10T12:19:50',
 /* originating_system */ 'ConsoleParametricFooting v1.0.0.0',
 /* authorization */ 'None');
 
-FILE_SCHEMA (('IFC4'));
+FILE_SCHEMA (('IFC4X2'));
 ENDSEC;
 
 DATA;
@@ -24,25 +24,25 @@ DATA;
 #8= IFCSIUNIT(*,.LENGTHUNIT.,$,.METRE.);
 #9= IFCSIUNIT(*,.AREAUNIT.,$,.SQUARE_METRE.);
 #10= IFCSIUNIT(*,.VOLUMEUNIT.,$,.CUBIC_METRE.);
-#11= IFCPROJECTLIBRARY('1tAy9Z5K13auyT3YE4aeBM',$,'ObjectLibrary',$,$,$,$,(#24),#12);
+#11= IFCPROJECTLIBRARY('2rJfFD94n4WxzHxfkPCOft',$,'ObjectLibrary',$,$,$,$,(#23),#12);
 #12= IFCUNITASSIGNMENT((#13,#9,#10,#14,#15));
 #13= IFCSIUNIT(*,.LENGTHUNIT.,.MILLI.,.METRE.);
 #14= IFCSIUNIT(*,.PLANEANGLEUNIT.,$,.RADIAN.);
 #15= IFCSIUNIT(*,.TIMEUNIT.,$,.SECOND.);
-#16= IFCFOOTINGTYPE('3Nlaz12CjCCw_ZR4VWwm$7',$,'PadFootingParametric',$,$,(#30),(#23),$,$,.PAD_FOOTING.);
+#16= IFCFOOTINGTYPE('36UcYCIVjAfvbyIqs$Nuyh',$,'PadFootingParametric',$,$,(#30),(#29),$,$,.PAD_FOOTING.);
 #18= IFCRECTANGLEPROFILEDEF(.AREA.,'PadFootingParametric',$,800.0,800.0);
 #19= IFCCARTESIANPOINT((0.0,0.0,0.0));
 #20= IFCAXIS2PLACEMENT3D(#19,$,$);
 #21= IFCDIRECTION((0.0,0.0,-1.0));
 #22= IFCEXTRUDEDAREASOLID(#18,#20,#21,300.0);
-#23= IFCREPRESENTATIONMAP(#5,#29);
-#24= IFCGEOMETRICREPRESENTATIONCONTEXT($,'Model',3,0.0001,#26,#27);
-#25= IFCCARTESIANPOINT((0.0,0.0,0.0));
-#26= IFCAXIS2PLACEMENT3D(#25,$,$);
-#27= IFCDIRECTION((0.0,1.0));
-#28= IFCGEOMETRICREPRESENTATIONSUBCONTEXT('Body','Model',*,*,*,*,#24,$,.MODEL_VIEW.,$);
-#29= IFCSHAPEREPRESENTATION(#28,'Body','SolidModel',(#22));
-#30= IFCELEMENTQUANTITY('3ug$MP9bvCTB3m9jJaEZJL',$,'Qto_FootingBaseQuantities','PadFootingParametric',$,(#31,#32,#33));
+#23= IFCGEOMETRICREPRESENTATIONCONTEXT($,'Model',3,0.0001,#25,#26);
+#24= IFCCARTESIANPOINT((0.0,0.0,0.0));
+#25= IFCAXIS2PLACEMENT3D(#24,$,$);
+#26= IFCDIRECTION((0.0,1.0));
+#27= IFCGEOMETRICREPRESENTATIONSUBCONTEXT('Body','Model',*,*,*,*,#23,$,.MODEL_VIEW.,$);
+#28= IFCSHAPEREPRESENTATION(#27,'Body','SweptSolid',(#22));
+#29= IFCREPRESENTATIONMAP(#5,#28);
+#30= IFCELEMENTQUANTITY('0DHW$Ph$vDpetcz$zACkLP',$,'Qto_FootingBaseQuantities',$,$,(#31,#32,#33));
 #31= IFCQUANTITYLENGTH('Length',$,$,800.0,$);
 #32= IFCQUANTITYLENGTH('Width',$,$,800.0,$);
 #33= IFCQUANTITYLENGTH('Height',$,$,300.0,$);
@@ -53,7 +53,7 @@ DATA;
 #38= IFCREFERENCE($,'MappedRepresentation',$,$,#37);
 #39= IFCREFERENCE($,'RepresentationMaps',$,(1),#38);
 #40= IFCRESOURCECONSTRAINTRELATIONSHIP($,$,#34,(#31));
-#41= IFCRELASSOCIATESCONSTRAINT('0oPUp5p4bDGQ4g$CCJD2Qz',$,$,$,(#16),$,#34);
+#41= IFCRELASSOCIATESCONSTRAINT('3mV1JBwqL0zeme7QhiFlHg',$,$,$,(#16),$,#34);
 #42= IFCMETRIC('Width',$,.HARD.,$,$,$,$,.EQUALTO.,$,$,#47);
 #43= IFCREFERENCE('IfcRectangleProfileDef','YDim',$,$,$);
 #44= IFCREFERENCE('IfcExtrudedAreaSolid','SweptArea',$,$,#43);
@@ -61,49 +61,49 @@ DATA;
 #46= IFCREFERENCE($,'MappedRepresentation',$,$,#45);
 #47= IFCREFERENCE($,'RepresentationMaps',$,(1),#46);
 #48= IFCRESOURCECONSTRAINTRELATIONSHIP($,$,#42,(#32));
-#49= IFCRELASSOCIATESCONSTRAINT('3hr6dDhTfAWgVvmNIfNN3B',$,$,$,(#16),$,#42);
+#49= IFCRELASSOCIATESCONSTRAINT('2LHC2dMljCVAr3mT4v0L88',$,$,$,(#16),$,#42);
 #50= IFCMETRIC('Height',$,.HARD.,$,$,$,$,.EQUALTO.,$,$,#54);
 #51= IFCREFERENCE('IfcExtrudedAreaSolid','Depth',$,$,$);
 #52= IFCREFERENCE($,'Items',$,(1),#51);
 #53= IFCREFERENCE($,'MappedRepresentation',$,$,#52);
 #54= IFCREFERENCE($,'RepresentationMaps',$,(1),#53);
 #55= IFCRESOURCECONSTRAINTRELATIONSHIP($,$,#50,(#33));
-#56= IFCRELASSOCIATESCONSTRAINT('0y1ddoImD7U9LxCKTBm4DL',$,$,$,(#16),$,#50);
-#57= IFCFOOTINGTYPE('05LFc3yRX2SAW8wvz5h7FY',$,'PadFooting800x800x300',$,$,(#65),(#63),$,$,.PAD_FOOTING.);
+#56= IFCRELASSOCIATESCONSTRAINT('3lVKM3Ldn1awJQJS8rBHZU',$,$,$,(#16),$,#50);
+#57= IFCFOOTINGTYPE('0_y1uaZJz4URHVTwpHGLhr',$,'PadFooting800x800x300',$,$,(#65),(#64),$,$,.PAD_FOOTING.);
 #59= IFCRECTANGLEPROFILEDEF(.AREA.,'PadFooting800x800x300',$,800.0,800.0);
 #60= IFCCARTESIANPOINT((0.0,0.0,0.0));
 #61= IFCAXIS2PLACEMENT3D(#60,$,$);
 #62= IFCEXTRUDEDAREASOLID(#59,#61,#21,300.0);
-#63= IFCREPRESENTATIONMAP(#5,#64);
-#64= IFCSHAPEREPRESENTATION(#28,'Body','SolidModel',(#62));
-#65= IFCELEMENTQUANTITY('3M99rnZzfCCvLv_OSqvVPS',$,'Qto_FootingBaseQuantities','PadFooting800x800x300',$,(#66,#67,#68));
+#63= IFCSHAPEREPRESENTATION(#27,'Body','SweptSolid',(#62));
+#64= IFCREPRESENTATIONMAP(#5,#63);
+#65= IFCELEMENTQUANTITY('2uakNmumX5AhDOfsNtQOOO',$,'Qto_FootingBaseQuantities',$,$,(#66,#67,#68));
 #66= IFCQUANTITYLENGTH('Length',$,$,800.0,$);
 #67= IFCQUANTITYLENGTH('Width',$,$,800.0,$);
 #68= IFCQUANTITYLENGTH('Height',$,$,300.0,$);
-#69= IFCFOOTINGTYPE('2zf57xMcHEzAuH79Z_Fj4o',$,'PadFooting600x600x250',$,$,(#77),(#75),$,$,.PAD_FOOTING.);
+#69= IFCFOOTINGTYPE('0CK1RLIdb6quycorOcjqCd',$,'PadFooting600x600x250',$,$,(#77),(#76),$,$,.PAD_FOOTING.);
 #71= IFCRECTANGLEPROFILEDEF(.AREA.,'PadFooting600x600x250',$,600.0,600.0);
 #72= IFCCARTESIANPOINT((0.0,0.0,0.0));
 #73= IFCAXIS2PLACEMENT3D(#72,$,$);
 #74= IFCEXTRUDEDAREASOLID(#71,#73,#21,250.0);
-#75= IFCREPRESENTATIONMAP(#5,#76);
-#76= IFCSHAPEREPRESENTATION(#28,'Body','SolidModel',(#74));
-#77= IFCELEMENTQUANTITY('3iAOn3wdP6xge3w1aHfox8',$,'Qto_FootingBaseQuantities','PadFooting600x600x250',$,(#78,#79,#80));
+#75= IFCSHAPEREPRESENTATION(#27,'Body','SweptSolid',(#74));
+#76= IFCREPRESENTATIONMAP(#5,#75);
+#77= IFCELEMENTQUANTITY('2oRdO829r8b915aUgG6o9c',$,'Qto_FootingBaseQuantities',$,$,(#78,#79,#80));
 #78= IFCQUANTITYLENGTH('Length',$,$,600.0,$);
 #79= IFCQUANTITYLENGTH('Width',$,$,600.0,$);
 #80= IFCQUANTITYLENGTH('Height',$,$,250.0,$);
-#81= IFCFOOTINGTYPE('2RnrmxTRrB5PAEa0z5YEW9',$,'PadFooting400x400x200',$,$,(#89),(#87),$,$,.PAD_FOOTING.);
+#81= IFCFOOTINGTYPE('1dEyJ_GMvCJwzh3BfO0z0V',$,'PadFooting400x400x200',$,$,(#89),(#88),$,$,.PAD_FOOTING.);
 #83= IFCRECTANGLEPROFILEDEF(.AREA.,'PadFooting400x400x200',$,400.0,400.0);
 #84= IFCCARTESIANPOINT((0.0,0.0,0.0));
 #85= IFCAXIS2PLACEMENT3D(#84,$,$);
 #86= IFCEXTRUDEDAREASOLID(#83,#85,#21,200.0);
-#87= IFCREPRESENTATIONMAP(#5,#88);
-#88= IFCSHAPEREPRESENTATION(#28,'Body','SolidModel',(#86));
-#89= IFCELEMENTQUANTITY('0czRD1EHDCmvUskzwCvjLk',$,'Qto_FootingBaseQuantities','PadFooting400x400x200',$,(#90,#91,#92));
+#87= IFCSHAPEREPRESENTATION(#27,'Body','SweptSolid',(#86));
+#88= IFCREPRESENTATIONMAP(#5,#87);
+#89= IFCELEMENTQUANTITY('1DRMMco_PAEOpxY4DipsX9',$,'Qto_FootingBaseQuantities',$,$,(#90,#91,#92));
 #90= IFCQUANTITYLENGTH('Length',$,$,400.0,$);
 #91= IFCQUANTITYLENGTH('Width',$,$,400.0,$);
 #92= IFCQUANTITYLENGTH('Height',$,$,200.0,$);
-#93= IFCRELASSIGNSTOPRODUCT('0M33Wvw_v8D8VUJ7XbBpGP',$,$,$,(#57,#69,#81),$,#16);
-#94= IFCRELDECLARES('1Ivg_Hz5rFvwYZPlIApyiI',$,$,$,#11,(#57,#69,#81));
+#93= IFCRELASSIGNSTOPRODUCT('1BM4i7yIf7ufZafEj3LEnB',$,$,$,(#57,#69,#81),$,#16);
+#94= IFCRELDECLARES('3Xfz$cwSj1b8BNdO7K32Gt',$,$,$,#11,(#57,#69,#81));
 ENDSEC;
 
 END-ISO-10303-21;

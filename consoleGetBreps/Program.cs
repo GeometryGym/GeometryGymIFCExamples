@@ -13,7 +13,7 @@ namespace testConsole
 		{
 			DatabaseIfc db = new DatabaseIfc(Console.In);
 			IfcProject project = db.Project;
-			IfcSpatialElement rootElement = project.RootElement;
+			IfcSpatialElement rootElement = project.RootElement();
 			List<IfcBuildingElement> elements = project.Extract<IfcBuildingElement>();
 			List<IfcFacetedBrep> breps = new List<IfcFacetedBrep>();
 			foreach(IfcBuildingElement element in elements)

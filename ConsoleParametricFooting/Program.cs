@@ -37,12 +37,12 @@ namespace ConsoleParametricFooting
 			string name = parametric ? "PadFootingParametric" : "PadFooting" + length + "x" + width + "x" + height;
 			IfcFootingType footingType = new IfcFootingType(db, name, IfcFootingTypeEnum.PAD_FOOTING);
 			IfcRectangleProfileDef rpd = new IfcRectangleProfileDef(db, name, length,width);
-			footingType.AddRepresentationMap(new IfcRepresentationMap(new IfcExtrudedAreaSolid(rpd, new IfcAxis2Placement3D(new IfcCartesianPoint(db, 0, 0, 0)), db.Factory.ZAxisNegative, height)));
+			footingType.RepresentationMaps.Add(new IfcRepresentationMap(db.Factory.XYPlanePlacement, new IfcShapeRepresentation(new IfcExtrudedAreaSolid(rpd, new IfcAxis2Placement3D(new IfcCartesianPoint(db, 0, 0, 0)), db.Factory.ZAxisNegative, height))));
 			Qto_FootingBaseQuantities baseQuantities = new Qto_FootingBaseQuantities(footingType);
 			baseQuantities.Length = length;
 			baseQuantities.Width = width;
 			baseQuantities.Height = height;
-			ReadOnlyCollection<IfcPhysicalQuantity> quantities = baseQuantities.Quantities;
+			IList<IfcPhysicalQuantity> quantities = baseQuantities.Quantities.Values.ToList();
 			if (parametric)
 			{
 				string prefix = @"RepresentationMaps[1].MappedRepresentation.Items[1]\IfcExtrudedAreaSolid.";

@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ifc:ifcXML xsi:schemaLocation="http://www.buildingsmart-tech.org/ifcXML/IFC4/Add1/IFC4_ADD1.xsd" xlmns="http://www.buildingsmart-tech.org/ifcXML/IFC4_ADD1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ifc="http://www.buildingsmart-tech.org/ifcXML/IFC4_ADD1">
-  <IfcProjectLibrary GlobalId="1tAy9Z5K13auyT3YE4aeBM" Name="ObjectLibrary">
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ifc:ifcXML xsi:schemaLocation="http://www.buildingsmart-tech.org/ifc/IFC4/Add2/IFC4_ADD2.xsd" xlmns="http://www.buildingsmart-tech.org/ifcXML/IFC4_ADD2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ifc="http://www.buildingsmart-tech.org/ifcXML/IFC4_ADD2">
+  <IfcProjectLibrary GlobalId="2rJfFD94n4WxzHxfkPCOft" Name="ObjectLibrary">
     <RepresentationContexts>
       <IfcGeometricRepresentationContext ContextType="Model" CoordinateSpaceDimension="3" Precision="0.0001">
         <WorldCoordinateSystem xsi:type="IfcAxis2Placement3D">
@@ -8,7 +8,7 @@
         </WorldCoordinateSystem>
         <TrueNorth DirectionRatios="0 1" xsi:type="IfcDirection" />
         <HasSubContexts>
-          <IfcGeometricRepresentationSubContext ContextIdentifier="Body" ContextType="Model" TargetView="model_view" id="i28" />
+          <IfcGeometricRepresentationSubContext ContextIdentifier="Body" ContextType="Model" TargetView="model_view" id="i27" />
         </HasSubContexts>
       </IfcGeometricRepresentationContext>
     </RepresentationContexts>
@@ -22,14 +22,14 @@
       </Units>
     </UnitsInContext>
     <Declares>
-      <IfcRelDeclares GlobalId="1Ivg_Hz5rFvwYZPlIApyiI">
+      <IfcRelDeclares GlobalId="3Xfz$cwSj1b8BNdO7K32Gt">
         <RelatedDefinitions>
-          <IfcFootingType GlobalId="05LFc3yRX2SAW8wvz5h7FY" Name="PadFooting800x800x300">
+          <IfcFootingType GlobalId="0_y1uaZJz4URHVTwpHGLhr" Name="PadFooting800x800x300">
             <HasAssignments>
-              <IfcRelAssignsToProduct GlobalId="0M33Wvw_v8D8VUJ7XbBpGP" id="i93">
-                <RelatingProduct GlobalId="3Nlaz12CjCCw_ZR4VWwm$7" Name="PadFootingParametric" xsi:type="IfcFootingType">
+              <IfcRelAssignsToProduct GlobalId="1BM4i7yIf7ufZafEj3LEnB" id="i93">
+                <RelatingProduct GlobalId="36UcYCIVjAfvbyIqs$Nuyh" Name="PadFootingParametric" xsi:type="IfcFootingType">
                   <HasAssociations>
-                    <IfcRelAssociatesConstraint GlobalId="0oPUp5p4bDGQ4g$CCJD2Qz">
+                    <IfcRelAssociatesConstraint GlobalId="3mV1JBwqL0zeme7QhiFlHg">
                       <RelatingConstraint Name="Length" ConstraintGrade="hard" BenchMark="equalto" xsi:type="IfcMetric">
                         <PropertiesForConstraint>
                           <IfcResourceConstraintRelationship>
@@ -49,7 +49,7 @@
                         </ReferencePath>
                       </RelatingConstraint>
                     </IfcRelAssociatesConstraint>
-                    <IfcRelAssociatesConstraint GlobalId="3hr6dDhTfAWgVvmNIfNN3B">
+                    <IfcRelAssociatesConstraint GlobalId="2LHC2dMljCVAr3mT4v0L88">
                       <RelatingConstraint Name="Width" ConstraintGrade="hard" BenchMark="equalto" xsi:type="IfcMetric">
                         <PropertiesForConstraint>
                           <IfcResourceConstraintRelationship>
@@ -69,7 +69,7 @@
                         </ReferencePath>
                       </RelatingConstraint>
                     </IfcRelAssociatesConstraint>
-                    <IfcRelAssociatesConstraint GlobalId="0y1ddoImD7U9LxCKTBm4DL">
+                    <IfcRelAssociatesConstraint GlobalId="3lVKM3Ldn1awJQJS8rBHZU">
                       <RelatingConstraint Name="Height" ConstraintGrade="hard" BenchMark="equalto" xsi:type="IfcMetric">
                         <PropertiesForConstraint>
                           <IfcResourceConstraintRelationship>
@@ -89,7 +89,7 @@
                     </IfcRelAssociatesConstraint>
                   </HasAssociations>
                   <HasPropertySets>
-                    <IfcElementQuantity GlobalId="3ug$MP9bvCTB3m9jJaEZJL" Name="Qto_FootingBaseQuantities" Description="PadFootingParametric">
+                    <IfcElementQuantity GlobalId="0DHW$Ph$vDpetcz$zACkLP" Name="Qto_FootingBaseQuantities">
                       <Quantities>
                         <IfcQuantityLength Name="Length" LengthValue="800" id="i31" />
                         <IfcQuantityLength Name="Width" LengthValue="800" id="i32" />
@@ -102,8 +102,8 @@
                       <MappingOrigin xsi:type="IfcAxis2Placement3D" id="i5">
                         <Location Coordinates="0 0 0" xsi:type="IfcCartesianPoint" />
                       </MappingOrigin>
-                      <MappedRepresentation RepresentationIdentifier="Body" RepresentationType="SolidModel" xsi:type="IfcShapeRepresentation">
-                        <ContextOfItems xsi:nil="true" href="i28" />
+                      <MappedRepresentation RepresentationIdentifier="Body" RepresentationType="SweptSolid" xsi:type="IfcShapeRepresentation">
+                        <ContextOfItems xsi:nil="true" href="i27" />
                         <Items>
                           <IfcExtrudedAreaSolid Depth="300">
                             <SweptArea ProfileType="area" ProfileName="PadFootingParametric" XDim="800" YDim="800" xsi:type="IfcRectangleProfileDef" />
@@ -120,7 +120,7 @@
               </IfcRelAssignsToProduct>
             </HasAssignments>
             <HasPropertySets>
-              <IfcElementQuantity GlobalId="3M99rnZzfCCvLv_OSqvVPS" Name="Qto_FootingBaseQuantities" Description="PadFooting800x800x300">
+              <IfcElementQuantity GlobalId="2uakNmumX5AhDOfsNtQOOO" Name="Qto_FootingBaseQuantities">
                 <Quantities>
                   <IfcQuantityLength Name="Length" LengthValue="800" />
                   <IfcQuantityLength Name="Width" LengthValue="800" />
@@ -131,8 +131,8 @@
             <RepresentationMaps>
               <IfcRepresentationMap>
                 <MappingOrigin xsi:nil="true" href="i5" />
-                <MappedRepresentation RepresentationIdentifier="Body" RepresentationType="SolidModel" xsi:type="IfcShapeRepresentation">
-                  <ContextOfItems xsi:nil="true" href="i28" />
+                <MappedRepresentation RepresentationIdentifier="Body" RepresentationType="SweptSolid" xsi:type="IfcShapeRepresentation">
+                  <ContextOfItems xsi:nil="true" href="i27" />
                   <Items>
                     <IfcExtrudedAreaSolid Depth="300">
                       <SweptArea ProfileType="area" ProfileName="PadFooting800x800x300" XDim="800" YDim="800" xsi:type="IfcRectangleProfileDef" />
@@ -146,12 +146,12 @@
               </IfcRepresentationMap>
             </RepresentationMaps>
           </IfcFootingType>
-          <IfcFootingType GlobalId="2zf57xMcHEzAuH79Z_Fj4o" Name="PadFooting600x600x250">
+          <IfcFootingType GlobalId="0CK1RLIdb6quycorOcjqCd" Name="PadFooting600x600x250">
             <HasAssignments>
               <IfcRelAssignsToProduct xsi:nil="true" href="i93" />
             </HasAssignments>
             <HasPropertySets>
-              <IfcElementQuantity GlobalId="3iAOn3wdP6xge3w1aHfox8" Name="Qto_FootingBaseQuantities" Description="PadFooting600x600x250">
+              <IfcElementQuantity GlobalId="2oRdO829r8b915aUgG6o9c" Name="Qto_FootingBaseQuantities">
                 <Quantities>
                   <IfcQuantityLength Name="Length" LengthValue="600" />
                   <IfcQuantityLength Name="Width" LengthValue="600" />
@@ -162,8 +162,8 @@
             <RepresentationMaps>
               <IfcRepresentationMap>
                 <MappingOrigin xsi:nil="true" href="i5" />
-                <MappedRepresentation RepresentationIdentifier="Body" RepresentationType="SolidModel" xsi:type="IfcShapeRepresentation">
-                  <ContextOfItems xsi:nil="true" href="i28" />
+                <MappedRepresentation RepresentationIdentifier="Body" RepresentationType="SweptSolid" xsi:type="IfcShapeRepresentation">
+                  <ContextOfItems xsi:nil="true" href="i27" />
                   <Items>
                     <IfcExtrudedAreaSolid Depth="250">
                       <SweptArea ProfileType="area" ProfileName="PadFooting600x600x250" XDim="600" YDim="600" xsi:type="IfcRectangleProfileDef" />
@@ -177,12 +177,12 @@
               </IfcRepresentationMap>
             </RepresentationMaps>
           </IfcFootingType>
-          <IfcFootingType GlobalId="2RnrmxTRrB5PAEa0z5YEW9" Name="PadFooting400x400x200">
+          <IfcFootingType GlobalId="1dEyJ_GMvCJwzh3BfO0z0V" Name="PadFooting400x400x200">
             <HasAssignments>
               <IfcRelAssignsToProduct xsi:nil="true" href="i93" />
             </HasAssignments>
             <HasPropertySets>
-              <IfcElementQuantity GlobalId="0czRD1EHDCmvUskzwCvjLk" Name="Qto_FootingBaseQuantities" Description="PadFooting400x400x200">
+              <IfcElementQuantity GlobalId="1DRMMco_PAEOpxY4DipsX9" Name="Qto_FootingBaseQuantities">
                 <Quantities>
                   <IfcQuantityLength Name="Length" LengthValue="400" />
                   <IfcQuantityLength Name="Width" LengthValue="400" />
@@ -193,8 +193,8 @@
             <RepresentationMaps>
               <IfcRepresentationMap>
                 <MappingOrigin xsi:nil="true" href="i5" />
-                <MappedRepresentation RepresentationIdentifier="Body" RepresentationType="SolidModel" xsi:type="IfcShapeRepresentation">
-                  <ContextOfItems xsi:nil="true" href="i28" />
+                <MappedRepresentation RepresentationIdentifier="Body" RepresentationType="SweptSolid" xsi:type="IfcShapeRepresentation">
+                  <ContextOfItems xsi:nil="true" href="i27" />
                   <Items>
                     <IfcExtrudedAreaSolid Depth="200">
                       <SweptArea ProfileType="area" ProfileName="PadFooting400x400x200" XDim="400" YDim="400" xsi:type="IfcRectangleProfileDef" />

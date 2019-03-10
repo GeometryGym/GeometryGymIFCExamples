@@ -23,9 +23,47 @@ namespace TestModelViewDefinition
 			Generate(ModelView.Ifc4Reference, path);
 		}
 
-		internal static DatabaseIfc Generate(ModelView mdv, string path)
+		internal static IfcBeam createBeam(IfcProduct host, IfcProfileDef profile, IfcCartesianPoint cartesianPoint, string globalId)
 		{
-			DatabaseIfc db = new DatabaseIfc(true, mdv);
+			DatabaseIfc db = host.Database;
+			IfcAxis2Placement3D position = new IfcAxis2Placement3D(db.Factory.Origin, db.Factory.XAxis, db.Factory.YAxisNegative);
+			IfcExtrudedAreaSolid extrudedAreaSolid = new IfcExtrudedAreaSolid(profile, position, 5000);
+			IfcShapeRepresentation shapeRepresentation = new IfcShapeRepresentation(extrudedAreaSolid);
+			IfcProductDefinitionShape productDefinitionShape = new IfcProductDefinitionShape(shapeRepresentation);
+
+			IfcLocalPlacement localPlacement = createLocalPlacement(host,cartesianPoint, db.Factory.YAxis);
+			IfcBeam beam = new IfcBeam(host, localPlacement, productDefinitionShape);
+			setGlobalId(beam, globalId);
+			return beam;
+		}
+		internal static IfcColumn createColumn(IfcProduct host, IfcProfileDef profile, IfcCartesianPoint cartesianPoint, string globalId)
+		{
+			DatabaseIfc db = host.Database;
+			IfcExtrudedAreaSolid extrudedAreaSolid = new IfcExtrudedAreaSolid(profile, 5000);
+			IfcShapeRepresentation shapeRepresentation = new IfcShapeRepresentation(extrudedAreaSolid);
+			IfcProductDefinitionShape productDefinitionShape = new IfcProductDefinitionShape(shapeRepresentation);
+			IfcLocalPlacement localPlacement = createLocalPlacement(host, cartesianPoint, db.Factory.YAxis);
+			IfcColumn column = new IfcColumn(host, localPlacement, productDefinitionShape);
+			setGlobalId(column, globalId);
+			
+			return column;
+		}
+		internal static IfcLocalPlacement createLocalPlacement(IfcProduct host, IfcCartesianPoint cartesianPoint, IfcDirection direction)
+		{
+			IfcAxis2Placement3D axis2Placement3D = new IfcAxis2Placement3D(cartesianPoint);
+			if(direction != null)
+				axis2Placement3D.RefDirection = direction;
+			return new IfcLocalPlacement(host.ObjectPlacement, axis2Placement3D);
+
+		}
+		internal static void setGlobalId(IfcRoot root, string globalId)
+		{
+			if (!string.IsNullOrEmpty(globalId))
+				root.GlobalId = globalId;
+		}
+		internal static DatabaseIfc Generate(ModelView mvd, string path)
+		{
+			DatabaseIfc db = new DatabaseIfc(true, mvd);
 			//IfcGeometricRepresentationContext
 			//IfcCartesianPoint
 			//IfcAxis2Placement3D
@@ -44,13 +82,13 @@ namespace TestModelViewDefinition
 			//IfcUnitAssignment
 			//IfcRelAggregates
 			IfcBuilding building = new IfcBuilding(site, "TestBuilding") { };
-			IfcBuildingStorey buildingStorey = new IfcBuildingStorey(building, "TestBuildingStorey", 3000);
+			IfcBuildingStorey buildingStorey = new IfcBuildingStorey(building, "TestBuildingStorey", 200);
 			IfcSpace space = new IfcSpace(buildingStorey, null, null) { Name = "TestSpace" };
-			space.RelatingType = new IfcSpaceType(db, "TestSpaceType", IfcSpaceTypeEnum.INTERNAL);
+			space.setRelatingType(new IfcSpaceType(db, "TestSpaceType", IfcSpaceTypeEnum.INTERNAL));
 
-			IfcZone zone = new IfcZone(buildingStorey, "TestZone", "TestZoneLongName", new List<IfcSpace>() { space });
+			IfcZone zone = new IfcZone(buildingStorey, "TestZone", new List<IfcSpace>() { space }) { LongName = "TestZoneLongName" };
 
-			IfcLocalPlacement localPlacement = buildingStorey.Placement as IfcLocalPlacement;
+			IfcLocalPlacement storeyLocalPlacement = buildingStorey.ObjectPlacement as IfcLocalPlacement;
 
 			IfcMaterial material = new IfcMaterial(db, "TestMaterial") { Description = "TestDescription", Category = "TestCategory" };
 			IfcMaterialProperties materialProperties = new IfcMaterialProperties("TestMaterialProperties", material);
@@ -64,14 +102,47 @@ namespace TestModelViewDefinition
 			IfcMaterialProfile materialProfile = new IfcMaterialProfile("TestMaterialProfile", material, arbitraryClosedProfileDef);
 			IfcMaterialProfileSet materialProfileSet = new IfcMaterialProfileSet("TestMaterialProfileSet", materialProfile);
 
-			IfcExtrudedAreaSolid extrudedAreaSolid = new IfcExtrudedAreaSolid(arbitraryClosedProfileDef, new IfcAxis2Placement3D(new IfcCartesianPoint(db,0,0,0),new IfcDirection(db,1,0,0),new IfcDirection(db,0,1,0)), new IfcDirection(db, 0, 0, 1), 5000);
 			IfcBeamType beamType = new IfcBeamType(db, "TestBeamType", IfcBeamTypeEnum.BEAM);
-			beamType.MaterialSelect = materialProfileSet; 
-			IfcBeam beam = new IfcBeam(buildingStorey,new IfcLocalPlacement(localPlacement, new IfcAxis2Placement3D(new IfcCartesianPoint(db, 1000, 2000, 0)) { RefDirection = new IfcDirection(db, 0, 1, 0) }),new IfcProductDefinitionShape(new IfcShapeRepresentation(extrudedAreaSolid)));
-			//IfcGeometricRepresentationSubContext
-			beam.RelatingType = beamType;
+			beamType.MaterialSelect = materialProfileSet;
+
+			int beamXPosition = 1000, beamYposition = 0, beamXSpacing = 1000;
+			int columnXPosition = -1000, columnYposition = 0, columnYSpacing = 1000;
+			IfcCartesianPoint cartesianPoint = new IfcCartesianPoint(db, beamXPosition += beamXSpacing, beamYposition, 0);
+			IfcBeam beam = createBeam(buildingStorey, arbitraryClosedProfileDef, cartesianPoint, "16KYUrH45BNwdHw8Y$ia8f");
+			beam.setRelatingType(beamType);
 			//IfcRelDefinesByType
 
+			IfcProfileDef columnProfile = arbitraryClosedProfileDef;
+			if(mvd != ModelView.Ifc4Reference)
+				columnProfile = new IfcIShapeProfileDef(db, "IShapeProfileDef", 500, 300, 15, 20) { FilletRadius = 10 };
+
+			IfcColumnType columnType = new IfcColumnType(db, "TestColumnType", IfcColumnTypeEnum.COLUMN);
+			cartesianPoint = new IfcCartesianPoint(db, columnXPosition, columnYposition+= columnYSpacing, 0);
+			//IfcGeometricRepresentationSubContext
+			IfcColumn column = createColumn(buildingStorey, columnProfile, cartesianPoint, "2jS8dBukzApveBm5m9QrBf");
+			column.setRelatingType(columnType);
+
+			if (mvd != ModelView.Ifc4Reference)
+			{
+				IfcCircleProfileDef circleProfileDef = circleProfileDef = new IfcCircleProfileDef(db, "TestCircleProfile", 350);
+				cartesianPoint = new IfcCartesianPoint(db, columnXPosition, columnYposition += columnYSpacing, 0);
+				createColumn(buildingStorey, circleProfileDef, cartesianPoint, "");
+
+				IfcRectangleProfileDef rectangleProfileDef = new IfcRectangleProfileDef(db, "TestRectangle", 400, 600);
+				cartesianPoint = new IfcCartesianPoint(db, beamXPosition += beamXSpacing, beamYposition, 0);
+				createBeam(buildingStorey, rectangleProfileDef, cartesianPoint, "");
+
+				IfcRectangleHollowProfileDef rectangleHollowProfileDef = new IfcRectangleHollowProfileDef(db, "TestRectangleHollow", 400, 600, 12);
+				cartesianPoint = new IfcCartesianPoint(db, beamXPosition += beamXSpacing, beamYposition, 0);
+				createBeam(buildingStorey, rectangleHollowProfileDef, cartesianPoint, "");
+			}
+
+			IfcProfileDef memberProfile = arbitraryClosedProfileDef;
+			if (mvd != ModelView.Ifc4Reference)
+				memberProfile = new IfcCircleHollowProfileDef(db, "TestCircleHollowProfile", 75, 9);
+			cartesianPoint = new IfcCartesianPoint(db, -1000, -1000, 0);
+			IfcProductDefinitionShape productDefinitionShape = new IfcProductDefinitionShape(new IfcShapeRepresentation(new IfcExtrudedAreaSolid(memberProfile, 2000)));
+			IfcMember member = new IfcMember(buildingStorey, createLocalPlacement(buildingStorey, cartesianPoint, db.Factory.YAxisNegative), productDefinitionShape); 
 			//	if(mdv != ModelView.Ifc4Reference)
 			//			IfcActorRole  NOT RV
 
@@ -130,7 +201,6 @@ namespace TestModelViewDefinition
 			//IfcChimneyType
 			//IfcCircle
 			//IfcCircleHollowProfileDef  NOT RV
-			//IfcCircleProfileDef  NOT RV
 			//IfcCivilElement
 			//IfcCivilElementType
 			//IfcClassification
@@ -140,9 +210,7 @@ namespace TestModelViewDefinition
 			//IfcCoilType
 			//IfcColourRgbList
 			//IfcColourSpecification
-			//IfcColumn
 			//IfcColumnStandardCase  NOT RV
-			//IfcColumnType
 			//IfcCommunicationsAppliance
 			//IfcCommunicationsApplianceType
 			//IfcComplexProperty
@@ -297,7 +365,6 @@ namespace TestModelViewDefinition
 			//IfcIndexedTriangleTextureMap
 			//IfcInterceptor
 			//IfcInterceptorType
-			//IfcIShapeProfileDef
 			//IfcJunctionBox
 			//IfcJunctionBoxType
 			//IfcLamp
@@ -326,9 +393,7 @@ namespace TestModelViewDefinition
 			//IfcMechanicalFastenerType
 			//IfcMedicalDevice
 			//IfcMedicalDeviceType
-			//IfcMember
 			//IfcMemberStandardCase  NOT RV
-			//IfcMemberType
 			//IfcMonetaryUnit
 			//IfcMotorConnection
 			//IfcMotorConnectionType
@@ -401,8 +466,6 @@ namespace TestModelViewDefinition
 			//IfcRampFlight
 			//IfcRampFlightType
 			//IfcRampType
-			//IfcRectangleHollowProfileDef  NOT RV
-			//IfcRectangleProfileDef  NOT RV
 			//IfcRectangularPyramid  NOT RV
 			//IfcReinforcingBar
 			//IfcReinforcingBarType
@@ -524,7 +587,7 @@ namespace TestModelViewDefinition
 			//IfcWindowStandardCase  NOT RV
 			//IfcWindowType
 			//IfcZShapeProfileDef  NOT RV
-			db.WriteFile(Path.Combine(path, mdv.ToString() + ".ifc"));
+			db.WriteFile(Path.Combine(path, mvd.ToString() + ".ifc"));
 			return db;
 		}
 

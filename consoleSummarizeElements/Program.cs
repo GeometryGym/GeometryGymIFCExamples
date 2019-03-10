@@ -96,25 +96,25 @@ namespace testConsole
 					profileSet = profileUsage.ForProfileSet;
 			}
 			if (profileSet != null)
-				return profileSet.PrimaryMaterial;
+				return profileSet.PrimaryMaterial();
 			IfcMaterialLayer layer = materialSelect as IfcMaterialLayer;
 			if (layer != null)
 				return layer.Material;
 			IfcMaterialLayerSet layerSet = materialSelect as IfcMaterialLayerSet;
 			if (layerSet != null)
-				return layerSet.PrimaryMaterial;
+				return layerSet.PrimaryMaterial();
 			IfcMaterialLayerSetUsage layerSetUsage = materialSelect as IfcMaterialLayerSetUsage;
 			if (layerSetUsage != null)
-				return layerSetUsage.PrimaryMaterial;
+				return layerSetUsage.PrimaryMaterial();
 			IfcMaterialList list = materialSelect as IfcMaterialList;
 			if (list != null)
-				return list.PrimaryMaterial;
+				return list.PrimaryMaterial();
 			IfcMaterialConstituent constituent = materialSelect as IfcMaterialConstituent;
 			if (constituent != null)
-				return constituent.PrimaryMaterial;
+				return constituent.PrimaryMaterial();
 			IfcMaterialConstituentSet constituentSet = materialSelect as IfcMaterialConstituentSet;
 			if (constituentSet != null)
-				return constituentSet.PrimaryMaterial;
+				return constituentSet.PrimaryMaterial();
 			return null;
 		}
 
