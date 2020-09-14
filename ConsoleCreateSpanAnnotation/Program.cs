@@ -64,7 +64,7 @@ namespace ConsoleCreateSpanAnnotation
             };
 
             // create an annotation
-            var annotation = new IfcAnnotation(database)
+            var annotation = new IfcAnnotation(alignment)
             {
                 Name = "DesignSpeed",
                 Description = "annotate the given alignment curve with some speed values",
