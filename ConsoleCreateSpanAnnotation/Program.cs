@@ -12,6 +12,7 @@ namespace ConsoleCreateSpanAnnotation
         static void Main(string[] args)
         {
             var database = new DatabaseIfc(ModelView.Ifc4X3NotAssigned);
+           
 
             // basic setup
             var site = new IfcSite(database, "SiteA");
@@ -67,11 +68,18 @@ namespace ConsoleCreateSpanAnnotation
             {
                 Name = "DesignSpeed",
                 Description = "annotate the given alignment curve with some speed values",
-                ObjectType = "Magic",
-                ObjectPlacement = new IfcLinearSpanPlacement(alignmentCurve,
-                    new IfcDistanceExpression(database, 10),
-                    165)
+                ObjectType = "Magic"
             };
+
+            var spanPlacement = new IfcLinearSpanPlacement(
+                alignmentCurve,
+                new IfcDistanceExpression(database, 10),
+                165)
+            {
+                
+            };
+            annotation.ObjectPlacement = spanPlacement;
+
 
             var pSet = new IfcPropertySet(annotation, "PSET_SpeedData", new List<IfcProperty>
             {
@@ -79,6 +87,10 @@ namespace ConsoleCreateSpanAnnotation
                 new IfcPropertySingleValue(database, "DesignSpeed", 160.0)
             });
 
+            // set some copyright things for DEPL
+            database.OfType<IfcOrganization>().First().Name =
+                "Chair of Computational Modeling and Simulation, Technical University of Munich";
+            
             database.WriteFile("AlignmentWithSpanAnnotation.ifc");
         }
     }
