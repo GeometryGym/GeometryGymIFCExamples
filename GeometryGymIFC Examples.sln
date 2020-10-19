@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.8
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleCountStories", "consoleCountStories\ConsoleCountStories.csproj", "{84E0D08C-7B02-46AE-AF40-0DD949B2B4A1}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleConvertToIFCJson", "ConsoleConvertToIFCJson\ConsoleConvertToIFCJson.csproj", "{36C759DD-2355-44C1-8FA9-CE270669334A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleCreateSurfaceMember", "ConsoleCreateSurfaceMember\ConsoleCreateSurfaceMember.csproj", "{442A078B-9EE7-4136-AD2B-831DBAB519EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleCreateSpatialStructure", "ConsoleCreateSpatialStructure\ConsoleCreateSpatialStructure.csproj", "{68792D4F-10A5-4541-BA0E-C1EA5DCD9AEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +137,18 @@ Global
 		{442A078B-9EE7-4136-AD2B-831DBAB519EE}.Release|x64.Build.0 = Release|Any CPU
 		{442A078B-9EE7-4136-AD2B-831DBAB519EE}.Release|x86.ActiveCfg = Release|Any CPU
 		{442A078B-9EE7-4136-AD2B-831DBAB519EE}.Release|x86.Build.0 = Release|Any CPU
+		{68792D4F-10A5-4541-BA0E-C1EA5DCD9AEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68792D4F-10A5-4541-BA0E-C1EA5DCD9AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68792D4F-10A5-4541-BA0E-C1EA5DCD9AEF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{68792D4F-10A5-4541-BA0E-C1EA5DCD9AEF}.Debug|x64.Build.0 = Debug|Any CPU
+		{68792D4F-10A5-4541-BA0E-C1EA5DCD9AEF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{68792D4F-10A5-4541-BA0E-C1EA5DCD9AEF}.Debug|x86.Build.0 = Debug|Any CPU
+		{68792D4F-10A5-4541-BA0E-C1EA5DCD9AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68792D4F-10A5-4541-BA0E-C1EA5DCD9AEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68792D4F-10A5-4541-BA0E-C1EA5DCD9AEF}.Release|x64.ActiveCfg = Release|Any CPU
+		{68792D4F-10A5-4541-BA0E-C1EA5DCD9AEF}.Release|x64.Build.0 = Release|Any CPU
+		{68792D4F-10A5-4541-BA0E-C1EA5DCD9AEF}.Release|x86.ActiveCfg = Release|Any CPU
+		{68792D4F-10A5-4541-BA0E-C1EA5DCD9AEF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
