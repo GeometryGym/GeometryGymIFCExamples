@@ -12,7 +12,7 @@ namespace ConsoleCreateSpanAnnotation
         static void Main(string[] args)
         {
             var database = new DatabaseIfc(ModelView.Ifc4X3NotAssigned);
-           
+            //database.Factory.Options.GenerateOwnerHistory = false;
 
             // basic setup
             var site = new IfcSite(database, "SiteA");
