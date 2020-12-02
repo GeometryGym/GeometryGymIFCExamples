@@ -12,7 +12,9 @@ namespace ConsoleCreateSpanAnnotation
         static void Main(string[] args)
         {
             var database = new DatabaseIfc(ModelView.Ifc4X3NotAssigned);
-            //database.Factory.Options.GenerateOwnerHistory = false;
+            database.Factory.ApplicationDeveloper = "Sebastian Esser";
+            // turn owner history off
+            database.Factory.Options.GenerateOwnerHistory = false;
 
             // basic setup
             var site = new IfcSite(database, "SiteA");
@@ -22,74 +24,95 @@ namespace ConsoleCreateSpanAnnotation
                 IfcUnitAssignment.Length.Metre
                 );
 
-            // add a simple alignment
-            var horizSegment = new IfcAlignment2DHorizontalSegment(
-                new IfcLineSegment2D(
-                    new IfcCartesianPoint(
-                        database,
-                        0,
-                        0),
-                    0.5,
-                    200));
-
-            var verticalSegment = new IfcAlignment2DVerSegLine(
-                     database,
-                     0,
-                     200,
-                     14,
-                     0
-                     );
-
-            var alignmentCurve = new IfcAlignmentCurve(
-                new IfcAlignment2DHorizontal(new List<IfcAlignment2DHorizontalSegment>
-                {
-                    horizSegment
-                }),
-                new IfcAlignment2DVertical(new List<IfcAlignment2DVerticalSegment>
-                {
-                    verticalSegment
-                })
-                );
-
-            var alignment = new IfcAlignment(site, alignmentCurve)
-            {
-                Name = "sampleAlignment",
-                Description = "some basic alignment data to demonstrate an IfcAnnotation with some IfcSpanPlacement",
-                ObjectPlacement = new IfcLocalPlacement(
-                    new IfcAxis2Placement3D(
-                        new IfcCartesianPoint(database, 0, 0, 0)
-                        )
-                    ),
-                PredefinedType = IfcAlignmentTypeEnum.NOTDEFINED
-            };
-
             // create an annotation
-            var annotation = new IfcAnnotation(alignment)
+            var annotation = new IfcAnnotation(database)
             {
                 Name = "DesignSpeed",
-                Description = "annotate the given alignment curve with some speed values",
-                ObjectType = "Magic"
             };
+            annotation.AddComment("Annotation item span-placed along the alignment");
+            
+            // link annotation with site
+            var contained = new IfcRelContainedInSpatialStructure(site);
+            contained.RelatedElements.Add(annotation);
 
-            var spanPlacement = new IfcLinearSpanPlacement(
-                alignmentCurve,
-                new IfcDistanceExpression(database, 10),
-                165)
+            #region Alignment
+
+            var alignment = new IfcAlignment(site)
             {
-                
+                Name = "Basic alignment with a single horizontal segment"
             };
-            annotation.ObjectPlacement = spanPlacement;
+            alignment.AddComment("Generate alignment representation");
+            
+            // semantic
+            var horizSegment = new IfcAlignmentHorizontalSegment(
+                new IfcCartesianPoint(database, 5, 10),
+                0, 
+                0,
+                0, 
+                200, 
+                IfcAlignmentHorizontalSegmentTypeEnum.LINE );
 
+            // geometric
+            var curveSegment = new IfcCurveSegment(
+                IfcTransitionCode.CONTSAMEGRADIENTSAMECURVATURE, 
+                new IfcAxis2Placement2D(new IfcCartesianPoint(database, 0, 0)), 
+                200, 
+                null);
+
+            var segments = new List<IfcSegment> {curveSegment};
+            var compositeCurve = new IfcCompositeCurve(segments);
+
+            alignment.Representation = new IfcProductDefinitionShape(new IfcShapeRepresentation(compositeCurve));
+            alignment.Axis = compositeCurve;
+
+            var horizSegments = new List<IfcAlignmentHorizontalSegment>() {horizSegment};   // semantic
+            
+            var alignmentHorizontal = new IfcAlignmentHorizontal(alignment, horizSegments);     // semantic
+            new IfcRelAggregates(alignment, alignmentHorizontal);   // semantic
+
+            // var alignmentSegment = new IfcAlignmentSegment(alignmentHorizontal, horizSegment);
+            var alignmentSegment = new IfcAlignmentSegment(database);
+            new IfcRelNests(alignmentHorizontal, alignmentSegment); // sorted list -> IfcRelNests
+                                                                    //alignmentSegment.Representation = new IfcProductDefinitionShape(new IfcShapeRepresentation(curveSegment));
+
+            #endregion
+
+            #region Annotation placement
+
+            alignmentSegment.AddComment("Create placement for annotation");
+
+            var axis2place = new IfcAxis2PlacementLinear(
+                new IfcPointByDistanceExpression(25, compositeCurve), 
+                null, 
+                null);
+
+
+            var linPlacement = new IfcLinearPlacement(axis2place);
+            linPlacement.Distance = new IfcPointByDistanceExpression(128, compositeCurve);
+            annotation.ObjectPlacement = linPlacement;
+
+            #endregion
+
+            #region PSet
+            //var lengthUnit = new IfcSIUnit(database, IfcUnitEnum.LENGTHUNIT, IfcSIPrefix.NONE, IfcSIUnitName.METRE);
+
+            var lengthDerivedUnit = new IfcSIUnit(database, IfcUnitEnum.LENGTHUNIT, IfcSIPrefix.KILO, IfcSIUnitName.METRE);
+            lengthDerivedUnit.AddComment("PSet setup");
+            var timeBaseUnit = new IfcSIUnit(database, IfcUnitEnum.TIMEUNIT, IfcSIPrefix.NONE, IfcSIUnitName.SECOND);
+            var timeDerivedUnit = new IfcConversionBasedUnit(IfcUnitEnum.TIMEUNIT, "hour", new IfcMeasureWithUnit(new IfcPositiveInteger(3600), timeBaseUnit));
+
+            var ifcderivedunitelem1 = new IfcDerivedUnitElement(lengthDerivedUnit, 1);
+            var ifcderivedunitelem2 = new IfcDerivedUnitElement(timeDerivedUnit, -1);
+            var speedUnit = new IfcDerivedUnit(
+                new List<IfcDerivedUnitElement>{ifcderivedunitelem1, ifcderivedunitelem2},
+                IfcDerivedUnitEnum.LINEARVELOCITYUNIT );
 
             var pSet = new IfcPropertySet(annotation, "PSET_SpeedData", new List<IfcProperty>
             {
-                new IfcPropertySingleValue(database, "CargoSpeed", 80.0),
-                new IfcPropertySingleValue(database, "DesignSpeed", 160.0)
+                new IfcPropertySingleValue(database, "CargoSpeed", new IfcLinearVelocityMeasure(60), speedUnit),
+                new IfcPropertySingleValue(database, "DesignSpeed", new IfcLinearVelocityMeasure(110), speedUnit)
             });
-
-            // set some copyright things for DEPL
-            database.OfType<IfcOrganization>().First().Name =
-                "Chair of Computational Modeling and Simulation, Technical University of Munich";
+            #endregion
             
             database.WriteFile("AlignmentWithSpanAnnotation.ifc");
         }
