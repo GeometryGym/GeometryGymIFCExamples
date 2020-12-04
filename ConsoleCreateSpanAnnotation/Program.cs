@@ -62,7 +62,12 @@ namespace ConsoleCreateSpanAnnotation
             var segments = new List<IfcSegment> {curveSegment};
             var compositeCurve = new IfcCompositeCurve(segments);
 
-            alignment.Representation = new IfcProductDefinitionShape(new IfcShapeRepresentation(compositeCurve));
+            var rep = new IfcShapeRepresentation(compositeCurve)
+            {
+                RepresentationIdentifier = "Axis2D"
+            };
+
+            alignment.Representation = new IfcProductDefinitionShape(rep);
             alignment.Axis = compositeCurve;
 
             var horizSegments = new List<IfcAlignmentHorizontalSegment>() {horizSegment};   // semantic
