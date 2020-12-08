@@ -64,7 +64,8 @@ namespace ConsoleCreateSpanAnnotation
 
             var rep = new IfcShapeRepresentation(compositeCurve)
             {
-                RepresentationIdentifier = "Axis2D"
+                RepresentationIdentifier = "Axis", 
+                RepresentationType = "Curve2D"
             };
 
             alignment.Representation = new IfcProductDefinitionShape(rep);
