@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GeometryGym.Ifc;
+using GeometryGym.STEP;
 
 namespace ConsoleCreateSpanAnnotation
 {
@@ -56,8 +57,12 @@ namespace ConsoleCreateSpanAnnotation
             var curveSegment = new IfcCurveSegment(
                 IfcTransitionCode.CONTSAMEGRADIENTSAMECURVATURE, 
                 new IfcAxis2Placement2D(new IfcCartesianPoint(database, 0, 0)), 
-                200, 
+                null, 
+                null, 
                 null);
+
+            curveSegment.SegmentStart = new IfcParameterValue(0);
+            curveSegment.SegmentLength = new IfcParameterValue(200);
 
             var segments = new List<IfcSegment> {curveSegment};
             var compositeCurve = new IfcCompositeCurve(segments);
@@ -71,9 +76,14 @@ namespace ConsoleCreateSpanAnnotation
             alignment.Representation = new IfcProductDefinitionShape(rep);
             alignment.Axis = compositeCurve;
 
-            var horizSegments = new List<IfcAlignmentHorizontalSegment>() {horizSegment};   // semantic
+            //var horizSegments = new List<IfcAlignmentHorizontalSegment>() {horizSegment};   // semantic
             
-            var alignmentHorizontal = new IfcAlignmentHorizontal(alignment, horizSegments);     // semantic
+            //var alignmentHorizontal = new IfcAlignmentHorizontal(alignment, horizSegments);     // semantic
+            var alignmentHorizontal = new IfcAlignmentHorizontal(database)
+            {
+                Segments = new LIST<IfcAlignmentHorizontalSegment>() {horizSegment}
+            }; // semantic
+
             new IfcRelAggregates(alignment, alignmentHorizontal);   // semantic
 
             // var alignmentSegment = new IfcAlignmentSegment(alignmentHorizontal, horizSegment);
