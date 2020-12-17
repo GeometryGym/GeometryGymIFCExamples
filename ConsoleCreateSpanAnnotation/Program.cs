@@ -9,17 +9,34 @@ namespace ConsoleCreateSpanAnnotation
         private static void Main(string[] args)
         {
             var database = new DatabaseIfc(ModelView.Ifc4X3NotAssigned);
-            database.Factory.ApplicationDeveloper = "Sebastian Esser";
+            database.Factory.ApplicationDeveloper = "Sebastian Esser - TUM";
+
             // turn owner history off
             database.Factory.Options.GenerateOwnerHistory = false;
+            database.Factory.Options.AngleUnitsInRadians = false;
 
             // basic setup
             var site = new IfcSite(database, "SiteA");
+
+            var lengthUnit = new IfcSIUnit(database, IfcUnitEnum.LENGTHUNIT, IfcSIPrefix.NONE, IfcSIUnitName.METRE);
+            var kilometerUnit = new IfcSIUnit(database, IfcUnitEnum.LENGTHUNIT, IfcSIPrefix.KILO, IfcSIUnitName.METRE);
+            var timeUnit = new IfcSIUnit(database, IfcUnitEnum.TIMEUNIT, IfcSIPrefix.NONE, IfcSIUnitName.SECOND);
+            var hourUnit = new IfcConversionBasedUnit(IfcUnitEnum.TIMEUNIT, "hours",
+                new IfcMeasureWithUnit(new IfcTimeMeasure(60 * 60), timeUnit));
+            //database.Factory.ConversionUnit(IfcConversionBasedUnit.Common.hour);
+            var angleUnits = database.Factory.ConversionUnit(IfcConversionBasedUnit.Common.degree);
+
+            var linearVelocityUnit = new IfcDerivedUnit(new IfcDerivedUnitElement(kilometerUnit, 1),
+                new IfcDerivedUnitElement(hourUnit, -1), IfcDerivedUnitEnum.LINEARVELOCITYUNIT);
+
+
+            var unitAssignment = new IfcUnitAssignment(lengthUnit, timeUnit, angleUnits, linearVelocityUnit);
             var project = new IfcProject(
                 site,
-                "SampleProject with a span annotation",
-                IfcUnitAssignment.Length.Metre
+                "SampleProject with span annotation",
+                unitAssignment
                 );
+
 
             // create an annotation
             var annotation = new IfcAnnotation(database)
@@ -39,6 +56,7 @@ namespace ConsoleCreateSpanAnnotation
                 Name = "Basic alignment with a single horizontal segment"
             };
             alignment.AddComment("Generate alignment representation");
+            alignment.ObjectPlacement = database.Factory.RootPlacement;
 
             // semantic
             var horizSegment = new IfcAlignmentHorizontalSegment(
@@ -46,47 +64,39 @@ namespace ConsoleCreateSpanAnnotation
                 0,
                 0,
                 0,
-                200,
+                400,
                 IfcAlignmentHorizontalSegmentTypeEnum.LINE);
+           
+             IfcCompositeCurve compositeCurve1 = null;
 
-            // geometric representation of a single segment. It gets referenced by IfcCompositeCurve.segments and IfcAlignmentSegment.Representation
+            // IfcAlignmentHorizontal alignmentHorizontal = new IfcAlignmentHorizontal(alignment.ObjectPlacement, 0, out compositeCurve1, horizSegment);
+            IfcAlignmentHorizontal alignmentHorizontal = new IfcAlignmentHorizontal(
+                alignment.ObjectPlacement,
+                0,
+                new List<IfcAlignmentHorizontalSegment>() { horizSegment },
+                out compositeCurve1);
+
+
             var curveSegment = new IfcCurveSegment(
-                 IfcTransitionCode.CONTSAMEGRADIENTSAMECURVATURE,
-                 new IfcAxis2Placement2D(new IfcCartesianPoint(database, 0, 0)),
-                 new IfcParameterValue(0),
-                 new IfcParameterValue(200),
-                 null);
+                             IfcTransitionCode.CONTSAMEGRADIENTSAMECURVATURE,
+                             new IfcAxis2PlacementLinear(new IfcPointByDistanceExpression(200, compositeCurve1)),
+                             new IfcNonNegativeLengthMeasure(25),
+                             new IfcNonNegativeLengthMeasure(110),
+                             compositeCurve1);
 
-
-            var segments = new List<IfcSegment> { curveSegment };
-            var compositeCurve = new IfcCompositeCurve(segments);
-
-            var rep = new IfcShapeRepresentation(compositeCurve)
-            {
-                RepresentationIdentifier = "Axis",
-                RepresentationType = "Curve2D"
-            };
-
-            alignment.Representation = new IfcProductDefinitionShape(rep);
-            alignment.Axis = compositeCurve;
-
-            // create an alignment horizontal instance that takes a list of horizontal segments
-            var alignmentHorizontal = new IfcAlignmentHorizontal(database)
-            {
-                Segments = new LIST<IfcAlignmentHorizontalSegment>() { horizSegment }
-            };
 
             // link alignment and and its horizontal part semantically
-            new IfcRelAggregates(alignment, alignmentHorizontal);   
+            new IfcRelAggregates(alignment, alignmentHorizontal);
 
             // create a new alignmentSegment with then gets one curve segment as its geometric representation
             var alignmentSegment = new IfcAlignmentSegment(database);
 
             // link horizontal alignment with the recently created alignment segment
             new IfcRelNests(alignmentHorizontal, alignmentSegment); // sorted list -> IfcRelNests
-            
+
             // connect geom representation to this segment
-            alignmentSegment.Representation = new IfcProductDefinitionShape(new IfcShapeRepresentation(curveSegment));
+            IfcGeometricRepresentationSubContext axisContext = database.Factory.SubContext(IfcGeometricRepresentationSubContext.SubContextIdentifier.Axis);
+            alignmentSegment.Representation = new IfcProductDefinitionShape(new IfcShapeRepresentation(axisContext, curveSegment, ShapeRepresentationType.Curve2D));
 
             #endregion Alignment
 
@@ -95,40 +105,27 @@ namespace ConsoleCreateSpanAnnotation
             alignmentSegment.AddComment("Create placement for annotation");
 
             var axis2place = new IfcAxis2PlacementLinear(
-                new IfcPointByDistanceExpression(25, compositeCurve),
-                null,
-                null);
+                new IfcPointByDistanceExpression(25, compositeCurve1));
 
-            var linPlacement = new IfcLinearPlacement(axis2place);
-            linPlacement.Distance = new IfcPointByDistanceExpression(128, compositeCurve);
+            var linPlacement = new IfcLinearPlacement(axis2place)
+            {
+                Distance = new IfcPointByDistanceExpression(110, compositeCurve1)
+            };
             annotation.ObjectPlacement = linPlacement;
 
             #endregion Annotation placement
 
             #region PSet
 
-            //var lengthUnit = new IfcSIUnit(database, IfcUnitEnum.LENGTHUNIT, IfcSIPrefix.NONE, IfcSIUnitName.METRE);
-
-            var lengthDerivedUnit = new IfcSIUnit(database, IfcUnitEnum.LENGTHUNIT, IfcSIPrefix.KILO, IfcSIUnitName.METRE);
-            lengthDerivedUnit.AddComment("PSet setup");
-            var timeBaseUnit = new IfcSIUnit(database, IfcUnitEnum.TIMEUNIT, IfcSIPrefix.NONE, IfcSIUnitName.SECOND);
-            var timeDerivedUnit = new IfcConversionBasedUnit(IfcUnitEnum.TIMEUNIT, "hour", new IfcMeasureWithUnit(new IfcPositiveInteger(3600), timeBaseUnit));
-
-            var ifcderivedunitelem1 = new IfcDerivedUnitElement(lengthDerivedUnit, 1);
-            var ifcderivedunitelem2 = new IfcDerivedUnitElement(timeDerivedUnit, -1);
-            var speedUnit = new IfcDerivedUnit(
-                new List<IfcDerivedUnitElement> { ifcderivedunitelem1, ifcderivedunitelem2 },
-                IfcDerivedUnitEnum.LINEARVELOCITYUNIT);
-
             var pSet = new IfcPropertySet(annotation, "PSET_SpeedData", new List<IfcProperty>
             {
-                new IfcPropertySingleValue(database, "CargoSpeed", new IfcLinearVelocityMeasure(60), speedUnit),
-                new IfcPropertySingleValue(database, "DesignSpeed", new IfcLinearVelocityMeasure(110), speedUnit)
+                new IfcPropertySingleValue(database, "CargoSpeed", new IfcLinearVelocityMeasure(60), linearVelocityUnit),
+                new IfcPropertySingleValue(database, "DesignSpeed", new IfcLinearVelocityMeasure(110), linearVelocityUnit)
             });
 
             #endregion PSet
 
-            database.WriteFile("AlignmentWithSpanAnnotation.ifc");
+            database.WriteFile("UT_SpanAnnotation1.ifc");
         }
     }
 }
