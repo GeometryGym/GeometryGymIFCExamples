@@ -1,0 +1,36 @@
+ISO-10303-21;
+HEADER;
+FILE_DESCRIPTION(('ViewDefinition [Ifc4X3NotAssigned]'),'2;1');
+FILE_NAME(
+/* name */ 'F:\X\5C\X\5CMy Work\X\5C\X\5CGeometry Gym\X\5C\X\5Csource code\X\5C\X\5COpen Source\X\5C\X\5CGeometryGymIFCExamples\X\5C\X\5CConsoleClassificationDemo\X\5C\X\5CTestClassification.ifc',
+/* time_stamp */ '2021-06-25T12:32:26',
+/* author */ ('JonMirtschin'),
+/* organization */ ('Geometry Gym'),
+/* preprocessor_version */ 'GeometryGymIFC v0.1.5.0 by Geometry Gym Pty Ltd built 2020-12-07T15:31:16',
+/* originating_system */ 'ConsoleClassificationDemo v1.0.0.0',
+/* authorization */ 'None');
+
+FILE_SCHEMA (('IFC4X3_RC2'));
+ENDSEC;
+
+DATA;
+#1= IFCPROJECT('3FHvqk95TFrxEyCzmy19vF',$,'DemoProject',$,$,$,$,$,$);
+#2= IFCPROJECTLIBRARY('2GkcONhjHDJwznykK4AShX',$,'ClassificationLibrary',$,$,$,$,$,$);
+#3= IFCRELDECLARES('1W0Ll37b96yhkf$WciEd5h',$,$,$,#1,(#2));
+#4= IFCCLASSIFICATION($,$,$,'MyClassification',$,$,$);
+#5= IFCRELASSOCIATESCLASSIFICATION('2X4sN9MDf6ixz6f8yzL66s',$,$,$,(#2),#4);
+#6= IFCCLASSIFICATIONREFERENCE($,'100','BuildingElements',#4,$,$);
+#7= IFCCLASSIFICATIONREFERENCE($,'100.100','Walls',#6,$,$);
+#8= IFCCLASSIFICATIONREFERENCE($,'100.100.002','PartiionWalls',#7,$,$);
+#9= IFCSIMPLEPROPERTYTEMPLATE('3Yss80qXKHuO00025QrE$V',$,'IsExternal',$,$,'IfcBoolean',$,$,$,$,$,$);
+#10= IFCPROPERTYSETTEMPLATE('2VWFE0qXKHuO00025QrE$V',$,'Pset_WallCommon',$,$,$,(#9));
+#11= IFCPROPERTYSINGLEVALUE('IsExternal',$,IFCBOOLEAN(.F.),$);
+#12= IFCPROPERTYSET('3GsVZWhI5679LDmePmY8Ao',$,'Pset_WallCommon',$,(#11));
+#13= IFCRELDEFINESBYTEMPLATE('1Gni$3RE12mRelI3J1JDki',$,$,$,(#12),#10);
+#14= IFCRELASSOCIATESCLASSIFICATION('3VOe3MLAr0gB_ZF7MnmiFs',$,$,$,(#12),#8);
+#15= IFCPERSON('JonMirtschin','JonMirtschin',$,$,$,$,$,$);
+#16= IFCORGANIZATION($,'Geometry Gym',$,$,$);
+ENDSEC;
+
+END-ISO-10303-21;
+
