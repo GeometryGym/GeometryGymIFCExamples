@@ -30,13 +30,13 @@ namespace ConsoleCreateSurfaceMember
 			points.Add(new IfcCartesianPoint(db, 3071.25, y, 3000.0));
 			points.Add(new IfcCartesianPoint(db, 3071.25, y, 0.0));
 			points.Add(new IfcCartesianPoint(db, -3968.75, y, 0.0));
-			bounds.Add(new IfcFaceOuterBound(new IfcPolyloop(points),true));
+			bounds.Add(new IfcFaceOuterBound(new IfcPolyLoop(points),true));
 			points.Clear();
 			points.Add(new IfcCartesianPoint(db, 551.25, y, 1000.0));
 			points.Add(new IfcCartesianPoint(db, -448.75, y, 1000.0));
 			points.Add(new IfcCartesianPoint(db, -448.75, y, 2000.0));
 			points.Add(new IfcCartesianPoint(db, 551.25, y, 2000.0));
-			bounds.Add(new IfcFaceBound(new IfcPolyloop(points),true));
+			bounds.Add(new IfcFaceBound(new IfcPolyLoop(points),true));
 			IfcFaceSurface face = new IfcFaceSurface(bounds, plane, true);
 			IfcStructuralSurfaceMember surfaceMember = new IfcStructuralSurfaceMember(analysisModel, face, material, 1, 200);
 			DirectoryInfo di = Directory.GetParent(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));

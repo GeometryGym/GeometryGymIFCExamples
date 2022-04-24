@@ -33,9 +33,9 @@ namespace testConsole
 			string filename = Path.Combine(di.FullName, "IFC Model.ifc");
 			DatabaseIfc db = new DatabaseIfc(filename);
 			IfcProject project = db.Project;
-			List<IfcBuildingElement> elements = project.Extract<IfcBuildingElement>();
+			List<IfcBuiltElement> elements = project.Extract<IfcBuiltElement>(); //IfcBuiltElement renamed from IfcBuildingElement
 			Dictionary<string, MyElement> dictionary = new Dictionary<string, MyElement>();
-			foreach(IfcBuildingElement element in elements)
+			foreach(IfcBuiltElement element in elements)
 			{
 				string desc = (element as IfcColumn != null ? "COL" : (element as IfcBeam != null ? "BEAM" : ""));
 
@@ -50,23 +50,23 @@ namespace testConsole
 						double length = 0;
 						foreach (IfcRelDefinesByProperties rdp in element.IsDefinedBy)
 						{
-							IfcPropertySet pset = rdp.RelatingPropertyDefinition as IfcPropertySet;
-							if (pset == null)
-								continue;
-							foreach (System.Collections.Generic.KeyValuePair<string, IfcProperty> pair in pset.HasProperties)
+							foreach (IfcPropertySet pset in rdp.RelatingPropertyDefinition.OfType<IfcPropertySet>())
 							{
-								IfcPropertySingleValue psv = pair.Value as IfcPropertySingleValue;
-								if (psv == null)
-									continue;
-								if (string.Compare("Grade", psv.Name) == 0)
+								foreach (System.Collections.Generic.KeyValuePair<string, IfcProperty> pair in pset.HasProperties)
 								{
-									grade = psv.NominalValue.Value.ToString();
-								}
-								else if (string.Compare("Length", psv.Name) == 0)
-								{
-									IfcLengthMeasure lengthmeasure = psv.NominalValue as IfcLengthMeasure;
-									if (lengthmeasure != null)
-										length = lengthmeasure.Measure;
+									IfcPropertySingleValue psv = pair.Value as IfcPropertySingleValue;
+									if (psv == null)
+										continue;
+									if (string.Compare("Grade", psv.Name) == 0)
+									{
+										grade = psv.NominalValue.Value.ToString();
+									}
+									else if (string.Compare("Length", psv.Name) == 0)
+									{
+										IfcLengthMeasure lengthmeasure = psv.NominalValue as IfcLengthMeasure;
+										if (lengthmeasure != null)
+											length = lengthmeasure.Measure;
+									}
 								}
 							}
 						}

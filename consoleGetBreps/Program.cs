@@ -14,14 +14,14 @@ namespace testConsole
 			DatabaseIfc db = new DatabaseIfc(Console.In);
 			IfcProject project = db.Project;
 			IfcSpatialElement rootElement = project.RootElement();
-			List<IfcBuildingElement> elements = project.Extract<IfcBuildingElement>();
+			List<IfcBuiltElement> elements = project.Extract<IfcBuiltElement>();  //IfcBuiltElement renamed from IfcBuildingElement
 			List<IfcFacetedBrep> breps = new List<IfcFacetedBrep>();
-			foreach(IfcBuildingElement element in elements)
+			foreach(IfcBuiltElement element in elements)
 			{
-				IfcProductRepresentation representation = element.Representation;
+				IfcProductDefinitionShape representation = element.Representation;
 				if (representation != null)
 				{
-					foreach (IfcRepresentation rep in representation.Representations)
+					foreach (IfcShapeModel rep in representation.Representations)
 					{
 						IfcShapeRepresentation sr = rep as IfcShapeRepresentation;
 						if (sr != null)
@@ -32,7 +32,6 @@ namespace testConsole
 								if (fb != null)
 									breps.Add(fb);
 							}
-
 						}
 					}
 				}

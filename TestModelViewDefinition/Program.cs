@@ -83,7 +83,7 @@ namespace TestModelViewDefinition
 			//IfcRelAggregates
 			IfcBuilding building = new IfcBuilding(site, "TestBuilding") { };
 			IfcBuildingStorey buildingStorey = new IfcBuildingStorey(building, "TestBuildingStorey", 200);
-			IfcSpace space = new IfcSpace(buildingStorey, null, null) { Name = "TestSpace" };
+			IfcSpace space = new IfcSpace(buildingStorey,"TestSpace");
 			space.setRelatingType(new IfcSpaceType(db, "TestSpaceType", IfcSpaceTypeEnum.INTERNAL));
 
 			IfcZone zone = new IfcZone(buildingStorey, "TestZone", new List<IfcSpace>() { space }) { LongName = "TestZoneLongName" };

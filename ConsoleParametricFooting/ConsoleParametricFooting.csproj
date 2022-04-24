@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ConsoleParametricFooting</RootNamespace>
     <AssemblyName>ConsoleParametricFooting</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GeometryGymIFC, Version=0.0.20.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GeometryGymIFC.0.0.20\lib\net45\GeometryGymIFC.dll</HintPath>
+    <Reference Include="GeometryGymIFCcore, Version=0.1.25.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GeometryGymIFC_Core.0.1.25\lib\netstandard2.0\GeometryGymIFCcore.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
