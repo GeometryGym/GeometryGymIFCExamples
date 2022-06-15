@@ -37,6 +37,7 @@ namespace testConsole
 			Dictionary<string, MyElement> dictionary = new Dictionary<string, MyElement>();
 			foreach(IfcBuiltElement element in elements)
 			{
+				
 				string desc = (element as IfcColumn != null ? "COL" : (element as IfcBeam != null ? "BEAM" : ""));
 
 				string mark = element.Tag;
@@ -68,6 +69,7 @@ namespace testConsole
 											length = lengthmeasure.Measure;
 									}
 								}
+								
 							}
 						}
 						dictionary.Add(mark, new MyElement(mark, desc, element.ObjectType, grade, length));
