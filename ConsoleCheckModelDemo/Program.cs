@@ -13,9 +13,8 @@ namespace ConsoleCheckModelDemo
 		static void Main(string[] args)
 		{
 			DatabaseIfc db = new DatabaseIfc(args[0]);
-			
+			new ModelCheckerDemo().checkModel(db);
 		}
-
 	}
 
 	internal class ModelCheckerDemo
