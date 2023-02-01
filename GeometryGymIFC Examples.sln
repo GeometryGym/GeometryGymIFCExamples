@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleFilterElements", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleCheckModelDemo", "ConsoleCheckModelDemo\ConsoleCheckModelDemo.csproj", "{A5A10695-EDFA-4EFB-B36B-8271E693E2E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IFC4X4_Tunnel_Deployment", "IFC4X4_Tunnel_Deployment\IFC4X4_Tunnel_Deployment.csproj", "{A804D99C-5757-4CDD-BD26-E0D5250D4667}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -191,6 +193,18 @@ Global
 		{A5A10695-EDFA-4EFB-B36B-8271E693E2E4}.Release|x64.Build.0 = Release|Any CPU
 		{A5A10695-EDFA-4EFB-B36B-8271E693E2E4}.Release|x86.ActiveCfg = Release|Any CPU
 		{A5A10695-EDFA-4EFB-B36B-8271E693E2E4}.Release|x86.Build.0 = Release|Any CPU
+		{A804D99C-5757-4CDD-BD26-E0D5250D4667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A804D99C-5757-4CDD-BD26-E0D5250D4667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A804D99C-5757-4CDD-BD26-E0D5250D4667}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A804D99C-5757-4CDD-BD26-E0D5250D4667}.Debug|x64.Build.0 = Debug|Any CPU
+		{A804D99C-5757-4CDD-BD26-E0D5250D4667}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A804D99C-5757-4CDD-BD26-E0D5250D4667}.Debug|x86.Build.0 = Debug|Any CPU
+		{A804D99C-5757-4CDD-BD26-E0D5250D4667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A804D99C-5757-4CDD-BD26-E0D5250D4667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A804D99C-5757-4CDD-BD26-E0D5250D4667}.Release|x64.ActiveCfg = Release|Any CPU
+		{A804D99C-5757-4CDD-BD26-E0D5250D4667}.Release|x64.Build.0 = Release|Any CPU
+		{A804D99C-5757-4CDD-BD26-E0D5250D4667}.Release|x86.ActiveCfg = Release|Any CPU
+		{A804D99C-5757-4CDD-BD26-E0D5250D4667}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
