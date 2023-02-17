@@ -8,7 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GeometryGymIFC_Core" Version="0.2.8" />
+    <PackageReference Include="GeometryGymIFC_Core" Version="0.2.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="GeometryGymIFCcore">
+      <HintPath>..\..\..\GeometryGym\BIM\IFC\GeometryGymIFC\GeometryGymIFCcore\bin\Debug\net6.0\GeometryGymIFCcore.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

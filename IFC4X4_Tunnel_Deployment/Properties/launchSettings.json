@@ -2,7 +2,6 @@
   "profiles": {
     "IFC4X4_Tunnel_Deployment": {
       "commandName": "Project",
-      "commandLineArgs": "GeometryGym_Tunnel.ifc",
       "workingDirectory": "F:\\_ifcTunnel"
     }
   }
